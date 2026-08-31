@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+:root {
+  --ifm-color-primary: #2050c4;
+  --ifm-color-primary-dark: #1c48b0;
+  --ifm-color-primary-darker: #1a4496;
+  --ifm-color-primary-darkest: #15387b;
+  --ifm-color-primary-light: #3b6bff;
+  --ifm-color-primary-lighter: #6fa8ff;
+  --ifm-color-primary-lightest: #a8c4ff;
+  --ifm-background-color: #10214f;
+  --ifm-navbar-background-color: #101012;
+  --ifm-footer-background-color: #101012;
+  --ifm-font-family-base: 'Space Grotesk', system-ui, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', monospace;
+  --ifm-code-font-size: 95%;
+}
+
+[data-theme='light'] {
+  --ifm-background-color: #f4f5f7;
+  --ifm-font-color-base: #101012;
+  --ifm-navbar-background-color: #f4f5f7;
+  --ifm-footer-background-color: #10214f;
+}
+
+html[data-theme='dark'] {
+  --ifm-background-color: #10214f;
+  --ifm-font-color-base: #f4f5f7;
+}
+
+.navbar__title {
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
