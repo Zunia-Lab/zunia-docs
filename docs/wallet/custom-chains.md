@@ -1,6 +1,6 @@
 # Custom chains
 
-Chains in the [Zunia chain registry](https://github.com/zunialab/zunia-chain-registry) ship automatically. For chains not in the registry, add them manually.
+Chains in the [Zunia chain registry](https://github.com/Zunia-Lab/zunia-chain-registry) ship automatically. For chains not in the registry, add them manually.
 
 ## Add by RPC
 
@@ -14,4 +14,4 @@ Only add endpoints you trust. Malicious RPC nodes can show fake balances or cens
 
 ## Contribute to the registry
 
-If your chain is public, open a PR to [zunia-chain-registry](https://github.com/zunialab/zunia-chain-registry) so all users get the chain without manual setup.
+If your chain is public, open a PR to [zunia-chain-registry](https://github.com/Zunia-Lab/zunia-chain-registry) so all users get the chain without manual setup.

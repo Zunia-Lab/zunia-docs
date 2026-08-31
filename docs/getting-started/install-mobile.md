@@ -7,7 +7,7 @@ The Zunia mobile app is in active development. App Store and Play Store listings
 ## Development build
 
 ```bash
-git clone https://github.com/zunialab/zunia-mobile.git
+git clone https://github.com/Zunia-Lab/zunia-mobile.git
 cd zunia-mobile
 npm install
 npx expo start

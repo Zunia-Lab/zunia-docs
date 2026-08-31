@@ -7,7 +7,7 @@ The Zunia extension is in active development. Chrome Web Store listing coming so
 ## Development build
 
 ```bash
-git clone https://github.com/zunialab/zunia-extension.git
+git clone https://github.com/Zunia-Lab/zunia-extension.git
 cd zunia-extension
 npm install
 npm run dev

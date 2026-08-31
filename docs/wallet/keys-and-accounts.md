@@ -14,4 +14,4 @@ Write down your 12 or 24-word recovery phrase and store it offline. Zunia cannot
 
 ## Hardware wallets
 
-Ledger and Keystone support is planned. Track progress in [zunia-extension](https://github.com/zunialab/zunia-extension) releases.
+Ledger and Keystone support is planned. Track progress in [zunia-extension](https://github.com/Zunia-Lab/zunia-extension) releases.

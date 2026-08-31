@@ -10,12 +10,12 @@ Every signing request shows amount, fee, memo, and contract calls where applicab
 
 ## Supply chain
 
-- Open source repositories under [zunialab](https://github.com/zunialab)
+- Open source repositories under [zunialab](https://github.com/Zunia-Lab)
 - Extension builds reproducible from tagged releases (when published)
-- Chain metadata reviewed via PR on [zunia-chain-registry](https://github.com/zunialab/zunia-chain-registry)
+- Chain metadata reviewed via PR on [zunia-chain-registry](https://github.com/Zunia-Lab/zunia-chain-registry)
 
 ## Report vulnerabilities
 
 Email [hello@zuniawallet.com](mailto:hello@zuniawallet.com). Do not open public issues for security reports.
 
-See [SECURITY.md](https://github.com/zunialab/.github/blob/main/SECURITY.md).
+See [SECURITY.md](https://github.com/Zunia-Lab/.github/blob/main/SECURITY.md).

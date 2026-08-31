@@ -14,4 +14,4 @@ The wallet is free. You pay only the network fee for each transaction, shown bef
 
 ## Is Zunia open source?
 
-Yes. All product repositories are public under [github.com/zunialab](https://github.com/zunialab).
+Yes. All product repositories are public under [github.com/Zunia-Lab](https://github.com/Zunia-Lab).

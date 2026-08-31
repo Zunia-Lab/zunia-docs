@@ -24,7 +24,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/zunialab/zunia-docs/tree/main/',
+          editUrl: 'https://github.com/Zunia-Lab/zunia-docs/tree/main/',
         },
         blog: false,
         theme: {
@@ -58,7 +58,7 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://github.com/zunialab/zunia-docs',
+          href: 'https://github.com/Zunia-Lab/zunia-docs',
           label: 'GitHub',
           position: 'right',
         },
@@ -71,22 +71,22 @@ const config: Config = {
           title: 'Product',
           items: [
             {label: 'Website', href: 'https://zuniawallet.com'},
-            {label: 'Extension', href: 'https://github.com/zunialab/zunia-extension'},
-            {label: 'Mobile', href: 'https://github.com/zunialab/zunia-mobile'},
+            {label: 'Extension', href: 'https://github.com/Zunia-Lab/zunia-extension'},
+            {label: 'Mobile', href: 'https://github.com/Zunia-Lab/zunia-mobile'},
           ],
         },
         {
           title: 'Developers',
           items: [
-            {label: 'Chain Registry', href: 'https://github.com/zunialab/zunia-chain-registry'},
+            {label: 'Chain Registry', href: 'https://github.com/Zunia-Lab/zunia-chain-registry'},
             {label: 'Provider API', to: '/docs/connect/dapp-api'},
-            {label: 'Brand Assets', href: 'https://github.com/zunialab/zunia-brand'},
+            {label: 'Brand Assets', href: 'https://github.com/Zunia-Lab/zunia-brand'},
           ],
         },
         {
           title: 'Community',
           items: [
-            {label: 'GitHub', href: 'https://github.com/zunialab'},
+            {label: 'GitHub', href: 'https://github.com/Zunia-Lab'},
             {label: 'Contact', href: 'mailto:hello@zuniawallet.com'},
           ],
         },

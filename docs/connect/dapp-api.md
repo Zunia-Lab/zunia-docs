@@ -17,4 +17,4 @@ The same calls arrive over WalletConnect when a dApp connects to the mobile wall
 
 Zunia asks per site before exposing accounts. You can revoke access anytime in Settings → Connected sites.
 
-See [zunia-extension](https://github.com/zunialab/zunia-extension) for the full API surface.
+See [zunia-extension](https://github.com/Zunia-Lab/zunia-extension) for the full API surface.

@@ -8,4 +8,4 @@ Before you sign, Zunia shows:
 - Estimated fee on the destination chain for IBC transfers
 - Gas limit (where applicable)
 
-You can adjust gas price in advanced settings. Defaults come from the [chain registry](https://github.com/zunialab/zunia-chain-registry).
+You can adjust gas price in advanced settings. Defaults come from the [chain registry](https://github.com/Zunia-Lab/zunia-chain-registry).

@@ -1,6 +1,6 @@
 # Brand assets
 
-Official logos, colors, and typography live in [zunia-brand](https://github.com/zunialab/zunia-brand).
+Official logos, colors, and typography live in [zunia-brand](https://github.com/Zunia-Lab/zunia-brand).
 
 ## Colors
 
