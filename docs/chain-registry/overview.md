@@ -8,4 +8,4 @@ Zunia clients fetch chain configs from:
 https://raw.githubusercontent.com/Zunia-Lab/zunia-chain-registry/main/cosmos/{identifier}.json
 ```
 
-This fork is maintained from [keplr-chain-registry](https://github.com/chainapsis/keplr-chain-registry) with Zunia-specific curation.
+The schema is compatible with the wider Cosmos suggest-chain ecosystem. Upstream reference: [keplr-chain-registry](https://github.com/chainapsis/keplr-chain-registry). Curation and branding are maintained by Zunia Lab.
