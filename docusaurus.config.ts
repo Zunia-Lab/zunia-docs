@@ -79,6 +79,7 @@ const config: Config = {
           title: 'Developers',
           items: [
             {label: 'Chain Registry', href: 'https://github.com/Zunia-Lab/zunia-chain-registry'},
+            {label: 'SDK', to: '/docs/connect/sdk'},
             {label: 'Provider API', to: '/docs/connect/dapp-api'},
             {label: 'Brand Assets', href: 'https://github.com/Zunia-Lab/zunia-brand'},
           ],
