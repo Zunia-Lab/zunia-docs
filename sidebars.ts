@@ -37,6 +37,16 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Developers',
+      items: ['developers/reproducible-builds'],
+    },
+    {
+      type: 'category',
+      label: 'Legal (draft)',
+      items: ['legal/terms', 'legal/privacy', 'legal/gdpr-data-map', 'legal/app-store-encryption'],
+    },
+    {
+      type: 'category',
       label: 'Chain registry',
       items: ['chain-registry/overview', 'chain-registry/contribute'],
     },

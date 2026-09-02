@@ -6,10 +6,12 @@ Official logos, colors, and typography live in [zunia-brand](https://github.com/
 
 | Name | Hex |
 |------|-----|
-| Cobalt Ink | `#10214F` |
-| Paper | `#F4F5F7` |
-| Live Cobalt | `#2050C4` |
-| Near-black | `#101012` |
+| Accent red | `#FF1B0C` |
+| Vermilion | `#FF4E12` |
+| Amber / gold | `#FFC414` |
+| Ink | `#111111` |
+| Paper | `#F1F0EE` |
+| Dark paper | `#0B0A09` |
 
 ## Fonts
 
