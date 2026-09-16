@@ -4,10 +4,10 @@
 
 # zunia-docs
 
-> Product documentation for Zunia at [docs.zuniawallet.com](https://docs.zuniawallet.com).
+> Product documentation for Zunia at [docs.zunialab.com](https://docs.zunialab.com).
 
 [![License](https://img.shields.io/github/license/Zunia-Lab/zunia-docs)](LICENSE)
-[![Website](https://img.shields.io/badge/website-zuniawallet.com-FF1B0C)](https://zuniawallet.com)
+[![Website](https://img.shields.io/badge/website-zunialab.com-FF1B0C)](https://zunialab.com)
 
 ## Overview
 
@@ -46,7 +46,7 @@ Edit Markdown under `docs/`. Sidebar is defined in `sidebars.ts`. Theme colors l
 
 ## Deployment
 
-Deploy the static `build/` output to Vercel (or similar) and attach `docs.zuniawallet.com`. See workspace [DEPLOY.md](../DEPLOY.md).
+Deploy the static `build/` output to Vercel (or similar) and attach `docs.zunialab.com`. See workspace [DEPLOY.md](../DEPLOY.md).
 
 ## Contributing
 

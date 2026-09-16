@@ -30,4 +30,4 @@ Software provided "as is" while in beta / pre-release. Limit liability clauses T
 
 ## 6. Contact
 
-hello@zuniawallet.com
+hello@zunialab.com

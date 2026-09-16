@@ -20,7 +20,7 @@ import { getZunia, enableZunia } from "@zunialab/sdk-web";
 
 const zunia = await getZunia();
 if (!zunia) {
-  // Prompt install: https://zuniawallet.com
+  // Prompt install: https://zunialab.com
 } else {
   await enableZunia("cosmoshub-4");
 }

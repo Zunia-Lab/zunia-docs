@@ -25,6 +25,6 @@ Every signing request shows amount, fee, memo, and contract calls where applicab
 
 ## Report vulnerabilities
 
-Email [hello@zuniawallet.com](mailto:hello@zuniawallet.com). Do not open public issues for security reports.
+Email [hello@zunialab.com](mailto:hello@zunialab.com). Do not open public issues for security reports.
 
 See [SECURITY.md](https://github.com/Zunia-Lab/.github/blob/main/SECURITY.md).

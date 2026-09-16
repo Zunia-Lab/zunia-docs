@@ -22,4 +22,4 @@ Official logos, colors, and typography live in [zunia-brand](https://github.com/
 
 Do not modify the mark, apply gradients, or change wordmark spacing. See the brand README for full guidelines.
 
-Questions: [hello@zuniawallet.com](mailto:hello@zuniawallet.com)
+Questions: [hello@zunialab.com](mailto:hello@zunialab.com)

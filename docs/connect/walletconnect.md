@@ -19,7 +19,7 @@ On mobile, dApps connect via **WalletConnect v2**. Config is in place; session h
 |------|---------|
 | Custom scheme | `zunia://wc?...` |
 | WalletConnect URI | `wc:...` |
-| Universal / App Link | `https://zuniawallet.com/wc?...` |
+| Universal / App Link | `https://zunialab.com/wc?...` |
 
 Verified HTTPS links require:
 
@@ -28,8 +28,8 @@ Verified HTTPS links require:
 
 Files on the marketing site:
 
-- `https://zuniawallet.com/.well-known/apple-app-site-association`
-- `https://zuniawallet.com/.well-known/assetlinks.json`
+- `https://zunialab.com/.well-known/apple-app-site-association`
+- `https://zunialab.com/.well-known/assetlinks.json`
 
 ## User flow (when implemented)
 

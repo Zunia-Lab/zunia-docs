@@ -24,9 +24,9 @@ Public docs describe the **product direction**. Many features below are **roadma
 |---------|-------------|--------|
 | [Browser extension](https://github.com/Zunia-Lab/zunia-extension) | Chrome and Firefox extension with `window.zunia` provider | In development |
 | [Mobile wallet](https://github.com/Zunia-Lab/zunia-mobile) | iOS and Android with WalletConnect | In development |
-| [Web dashboard](https://github.com/Zunia-Lab/zunia-dashboard) | Portfolio at wallet.zuniawallet.com (watch-only / WC; no browser keys) | Scaffold |
+| [Web dashboard](https://github.com/Zunia-Lab/zunia-dashboard) | Portfolio at wallet.zunialab.com (watch-only / WC; no browser keys) | Scaffold |
 | [Chain registry](https://github.com/Zunia-Lab/zunia-chain-registry) | Community chain metadata | Active |
 
 ## Need help?
 
-Email [hello@zuniawallet.com](mailto:hello@zuniawallet.com) or open an issue on [GitHub](https://github.com/Zunia-Lab).
+Email [hello@zunialab.com](mailto:hello@zunialab.com) or open an issue on [GitHub](https://github.com/Zunia-Lab).
