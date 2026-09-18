@@ -1,34 +1,405 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap');
+/**
+ * Zunia Docs theme — Chevrons brand (zunia-brand / @zunialab/tokens).
+ * Dark void + paper light, accent red, Space Grotesk + JetBrains Mono.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
-  --ifm-color-primary: #2050c4;
-  --ifm-color-primary-dark: #1c48b0;
-  --ifm-color-primary-darker: #1a4496;
-  --ifm-color-primary-darkest: #15387b;
-  --ifm-color-primary-light: #3b6bff;
-  --ifm-color-primary-lighter: #6fa8ff;
-  --ifm-color-primary-lightest: #a8c4ff;
-  --ifm-background-color: #10214f;
-  --ifm-navbar-background-color: #101012;
-  --ifm-footer-background-color: #101012;
-  --ifm-font-family-base: 'Space Grotesk', system-ui, sans-serif;
-  --ifm-font-family-monospace: 'JetBrains Mono', monospace;
-  --ifm-code-font-size: 95%;
-}
+  /* Brand */
+  --z-red: #c81018;
+  --z-vermilion: #f03a44;
+  --z-amber: #ff8a17;
+  --z-gold: #ffbe14;
+  --z-ink: #111111;
+  --z-paper: #f1f0ee;
+  --z-paper-warm: #faf9f7;
+  --z-void: #0b0a09;
+  --z-panel: #161311;
+  --z-chrome: #1c1814;
+  --z-line: rgba(17, 17, 17, 0.1);
+  --z-line-strong: rgba(17, 17, 17, 0.16);
+  --z-fg-muted: #444444;
+  --z-fg-dim: #6b6762;
+  --z-accent: #c81018;
+  --z-accent-gradient: linear-gradient(#c81018, #c81018);
 
-[data-theme='light'] {
-  --ifm-background-color: #f4f5f7;
-  --ifm-font-color-base: #101012;
-  --ifm-navbar-background-color: #f4f5f7;
-  --ifm-footer-background-color: #10214f;
+  /* Crimson scale. Links and buttons stay on this hue, not the orange ramp. */
+  --ifm-color-primary: #c81018;
+  --ifm-color-primary-dark: #b00e16;
+  --ifm-color-primary-darker: #a50d14;
+  --ifm-color-primary-darkest: #880b11;
+  --ifm-color-primary-light: #e01420;
+  --ifm-color-primary-lighter: #f03a44;
+  --ifm-color-primary-lightest: #ff5c64;
+
+  --ifm-color-success: #1f8a5b;
+  --ifm-color-info: #f03a44;
+  --ifm-color-warning: #ffbe14;
+  --ifm-color-danger: #c81018;
+
+  --ifm-background-color: var(--z-paper);
+  --ifm-background-surface-color: #ffffff;
+  --ifm-font-color-base: var(--z-ink);
+  --ifm-font-color-secondary: var(--z-fg-muted);
+  --ifm-heading-color: var(--z-ink);
+  --ifm-link-color: var(--z-red);
+  --ifm-link-hover-color: var(--z-vermilion);
+
+  --ifm-navbar-background-color: rgba(241, 240, 238, 0.88);
+  --ifm-navbar-shadow: 0 1px 0 var(--z-line);
+  --ifm-navbar-height: 64px;
+  --ifm-navbar-padding-horizontal: 1.25rem;
+  --ifm-navbar-link-color: var(--z-ink);
+  --ifm-navbar-link-hover-color: var(--z-red);
+
+  --ifm-footer-background-color: var(--z-void);
+  --ifm-footer-color: rgba(241, 240, 238, 0.72);
+  --ifm-footer-link-color: var(--z-paper);
+  --ifm-footer-title-color: var(--z-paper);
+  --ifm-footer-padding-vertical: 3rem;
+
+  --ifm-menu-color: var(--z-fg-muted);
+  --ifm-menu-color-active: var(--z-red);
+  --ifm-menu-color-background-active: rgba(200, 16, 24, 0.08);
+  --ifm-menu-color-background-hover: rgba(17, 17, 17, 0.04);
+
+  --ifm-toc-border-color: var(--z-line);
+  --ifm-hr-background-color: var(--z-line);
+  --ifm-table-border-color: var(--z-line-strong);
+  --ifm-table-stripe-background: rgba(17, 17, 17, 0.03);
+
+  --ifm-code-font-size: 90%;
+  --ifm-code-background: rgba(17, 17, 17, 0.05);
+  --ifm-code-padding-horizontal: 0.4rem;
+  --ifm-code-padding-vertical: 0.15rem;
+  --docusaurus-highlighted-code-line-bg: rgba(200, 16, 24, 0.08);
+
+  --ifm-font-family-base: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', ui-monospace, monospace;
+  --ifm-heading-font-family: 'Space Grotesk', system-ui, sans-serif;
+  --ifm-heading-font-weight: 600;
+  --ifm-font-weight-bold: 600;
+  --ifm-leading: 1.65;
+  --ifm-h1-font-size: 2.35rem;
+  --ifm-global-radius: 12px;
+  --ifm-button-border-radius: 999px;
+  --ifm-breadcrumb-separator-size-multiplier: 0.9;
+
+  --ifm-color-emphasis-100: #faf9f7;
+  --ifm-color-emphasis-200: #eceae6;
+  --ifm-color-emphasis-300: #ddd9d3;
+  --ifm-color-emphasis-600: #6b6762;
+  --ifm-color-emphasis-700: #444444;
+  --ifm-color-emphasis-800: #111111;
+  --ifm-color-emphasis-900: #0b0a09;
+
+  --doc-hero-glow: rgba(200, 16, 24, 0.16);
 }
 
 html[data-theme='dark'] {
-  --ifm-background-color: #10214f;
-  --ifm-font-color-base: #f4f5f7;
+  --z-line: rgba(241, 240, 238, 0.1);
+  --z-line-strong: rgba(241, 240, 238, 0.16);
+  --z-fg-muted: #c9c6c1;
+  --z-fg-dim: #9a948c;
+
+  --ifm-color-primary: #f03a44;
+  --ifm-color-primary-dark: #e01420;
+  --ifm-color-primary-darker: #c81018;
+  --ifm-color-primary-darkest: #a50d14;
+  --ifm-color-primary-light: #ff5c64;
+  --ifm-color-primary-lighter: #ff7a80;
+  --ifm-color-primary-lightest: #ff9aa0;
+
+  --ifm-background-color: var(--z-void);
+  --ifm-background-surface-color: var(--z-panel);
+  --ifm-font-color-base: var(--z-paper);
+  --ifm-font-color-secondary: var(--z-fg-muted);
+  --ifm-heading-color: var(--z-paper);
+  --ifm-link-color: #f03a44;
+  --ifm-link-hover-color: #ff5c64;
+
+  --ifm-navbar-background-color: rgba(11, 10, 9, 0.88);
+  --ifm-navbar-link-color: var(--z-paper);
+  --ifm-navbar-link-hover-color: #f03a44;
+  --ifm-navbar-shadow: 0 1px 0 var(--z-line);
+
+  --ifm-footer-background-color: #050504;
+  --ifm-menu-color: var(--z-fg-muted);
+  --ifm-menu-color-active: #f03a44;
+  --ifm-menu-color-background-active: rgba(200, 16, 24, 0.16);
+  --ifm-menu-color-background-hover: rgba(241, 240, 238, 0.05);
+
+  --ifm-code-background: rgba(241, 240, 238, 0.06);
+  --docusaurus-highlighted-code-line-bg: rgba(200, 16, 24, 0.16);
+
+  --ifm-color-emphasis-100: #161311;
+  --ifm-color-emphasis-200: #1c1814;
+  --ifm-color-emphasis-300: #2a2420;
+  --ifm-color-emphasis-600: #9a948c;
+  --ifm-color-emphasis-700: #c9c6c1;
+  --ifm-color-emphasis-800: #f1f0ee;
+  --ifm-color-emphasis-900: #ffffff;
+
+  --ifm-table-stripe-background: rgba(241, 240, 238, 0.03);
+  --doc-hero-glow: rgba(200, 16, 24, 0.18);
+}
+
+/* ——— Base ——— */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+.navbar__title {
+  letter-spacing: -0.05em;
+  font-weight: 600;
+}
+
+code,
+pre,
+.badge {
+  font-family: var(--ifm-font-family-monospace);
+  letter-spacing: 0;
+}
+
+a {
+  text-underline-offset: 0.15em;
+}
+
+/* ——— Navbar ——— */
+
+.navbar {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--z-line);
+}
+
+.navbar__brand {
+  gap: 0.55rem;
+}
+
+.navbar__logo {
+  height: 30px;
+  width: auto !important;
+  margin-right: 0;
 }
 
 .navbar__title {
+  display: none;
+}
+
+.navbar__item {
   font-weight: 500;
+  font-size: 0.92rem;
+}
+
+.navbar__link--active {
+  color: var(--ifm-color-primary);
+}
+
+.navbar__link--active::after,
+.navbar__link:hover::after {
+  border-bottom-color: var(--ifm-color-primary);
+}
+
+/* Light mode: use dark lockup via CSS filter on mark only if needed.
+   We use srcDark/srcLight when configured; mark is currentColor. */
+html[data-theme='light'] .navbar__logo {
+  color: var(--z-ink);
+}
+
+html[data-theme='dark'] .navbar__logo {
+  color: var(--z-paper);
+}
+
+/* ——— Sidebar / menu ——— */
+
+.menu__link {
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  font-weight: 600;
+}
+
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--z-line) !important;
+}
+
+/* ——— Content ——— */
+
+.markdown h1:first-child {
+  letter-spacing: -0.055em;
+}
+
+.markdown > h2 {
+  margin-top: 2.4rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--z-line);
+}
+
+.markdown code {
+  border-radius: 6px;
+  border: 1px solid var(--z-line);
+}
+
+.theme-code-block {
+  border-radius: 14px !important;
+  border: 1px solid var(--z-line);
+  box-shadow: none !important;
+}
+
+.pagination-nav__link {
+  border-radius: 14px;
+  border-color: var(--z-line);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--ifm-color-primary);
+  background: var(--ifm-menu-color-background-active);
+}
+
+.table-of-contents__link--active {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+.breadcrumbs__link {
+  font-size: 0.85rem;
+}
+
+.card,
+.cardContainer {
+  border-radius: 16px;
+  border-color: var(--z-line);
+}
+
+/* ——— Buttons ——— */
+
+.button {
+  font-weight: 600;
   letter-spacing: -0.02em;
+  border: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.button--primary,
+a.button--primary {
+  background: var(--z-accent);
+  color: #f6f3ef !important;
+  box-shadow: 0 6px 14px rgba(200, 16, 24, 0.2);
+}
+
+.button--primary:hover,
+a.button--primary:hover {
+  filter: brightness(1.05);
+  color: #f6f3ef !important;
+  transform: translateY(-1px);
+}
+
+.button--outline {
+  border: 1px solid var(--z-line-strong);
+  background: transparent;
+  color: var(--ifm-font-color-base);
+}
+
+.button--outline:hover {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  background: var(--ifm-menu-color-background-active);
+}
+
+/* ——— Footer ——— */
+
+.footer {
+  border-top: 1px solid rgba(241, 240, 238, 0.08);
+}
+
+.footer__title {
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.72;
+}
+
+.footer__link-item:hover {
+  color: #f03a44;
+  text-decoration: none;
+}
+
+.footer__copyright {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.78rem;
+  opacity: 0.55;
+}
+
+/* ——— Admonitions ——— */
+
+.alert {
+  border-radius: 12px;
+  border-left-width: 3px;
+}
+
+.alert--info {
+  --ifm-alert-background-color: rgba(240, 58, 68, 0.1);
+  --ifm-alert-border-color: #f03a44;
+}
+
+.alert--warning {
+  --ifm-alert-background-color: rgba(255, 190, 20, 0.12);
+  --ifm-alert-border-color: #ffbe14;
+}
+
+.alert--danger {
+  --ifm-alert-background-color: rgba(200, 16, 24, 0.1);
+  --ifm-alert-border-color: #c81018;
+}
+
+.alert--success {
+  --ifm-alert-background-color: rgba(31, 138, 91, 0.1);
+  --ifm-alert-border-color: #1f8a5b;
+}
+
+/* ——— Misc polish ——— */
+
+.theme-doc-version-badge,
+.badge--secondary {
+  border-radius: 999px;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--z-line-strong);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ifm-color-primary);
+  background-clip: padding-box;
+  border: 2px solid transparent;
 }

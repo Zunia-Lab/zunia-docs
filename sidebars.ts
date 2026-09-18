@@ -28,7 +28,13 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Connect to dApps',
-      items: ['connect/sdk', 'connect/dapp-api', 'connect/walletconnect'],
+      items: [
+        'connect/sdk',
+        'connect/dapp-api',
+        'connect/native-ws',
+        'connect/walletconnect',
+        'connect/env-matrix',
+      ],
     },
     {
       type: 'category',

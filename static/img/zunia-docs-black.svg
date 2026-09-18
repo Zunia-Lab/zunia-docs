@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471 120" width="471" height="120" role="img" aria-label="Zunia Docs">
+  <defs>
+    <mask id="mg" maskUnits="userSpaceOnUse" x="0" y="0" width="96" height="120">
+      <rect width="96" height="120" fill="#fff"/>
+      <path d="M26 20 L70 46 L26 72" fill="none" stroke="#000" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+    </mask>
+  </defs>
+  <g mask="url(#mg)">
+    <path d="M26 48 L70 74 L26 100" fill="none" stroke="#111111" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <path d="M26 20 L70 46 L26 72" fill="none" stroke="#111111" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="108" y="80" font-family="Space Grotesk, Helvetica Neue, Arial, sans-serif" font-weight="700" font-size="78" letter-spacing="-5" fill="#111111">zunia</text>
+  <text x="312" y="80" font-family="Space Grotesk, Helvetica Neue, Arial, sans-serif" font-weight="400" font-size="78" letter-spacing="-2.4" fill="rgba(17,17,17,0.55)">docs</text>
+</svg>

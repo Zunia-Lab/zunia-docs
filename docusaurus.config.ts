@@ -9,9 +9,9 @@ const config: Config = {
   future: {
     v4: true,
   },
-  url: 'https://docs.zunialab.com',
+  url: 'https://docs.zuniawallet.com',
   baseUrl: '/',
-  organizationName: 'zunialab',
+  organizationName: 'Zunia-Lab',
   projectName: 'zunia-docs',
   onBrokenLinks: 'throw',
   i18n: {
@@ -35,15 +35,37 @@ const config: Config = {
   ],
   themeConfig: {
     image: 'img/zunia-social-card.png',
+    metadata: [
+      {
+        name: 'theme-color',
+        content: '#0B0A09',
+      },
+      {
+        name: 'description',
+        content:
+          'Guides for the Zunia browser extension, mobile wallet, IBC, staking, and dApp SDK.',
+      },
+    ],
     colorMode: {
       defaultMode: 'dark',
-      respectPrefersColorScheme: true,
+      respectPrefersColorScheme: false,
+      disableSwitch: false,
+    },
+    docs: {
+      sidebar: {
+        hideable: true,
+        autoCollapseCategories: true,
+      },
     },
     navbar: {
-      title: 'Zunia Docs',
+      title: '',
+      hideOnScroll: false,
       logo: {
-        alt: 'Zunia',
-        src: 'img/zunia-mark.svg',
+        alt: 'Zunia Docs',
+        src: 'img/zunia-docs-black.svg',
+        srcDark: 'img/zunia-docs-white.svg',
+        width: 118,
+        height: 30,
       },
       items: [
         {
@@ -53,12 +75,17 @@ const config: Config = {
           label: 'Documentation',
         },
         {
-          href: 'https://zunialab.com',
+          to: '/docs/connect/sdk',
+          label: 'SDK',
+          position: 'left',
+        },
+        {
+          href: 'https://zuniawallet.com',
           label: 'Website',
           position: 'right',
         },
         {
-          href: 'https://github.com/Zunia-Lab/zunia-docs',
+          href: 'https://github.com/Zunia-Lab',
           label: 'GitHub',
           position: 'right',
         },
@@ -70,34 +97,51 @@ const config: Config = {
         {
           title: 'Product',
           items: [
-            {label: 'Website', href: 'https://zunialab.com'},
-            {label: 'Extension', href: 'https://github.com/Zunia-Lab/zunia-extension'},
-            {label: 'Mobile', href: 'https://github.com/Zunia-Lab/zunia-mobile'},
+            {label: 'Website', href: 'https://zuniawallet.com'},
+            {
+              label: 'Extension',
+              href: 'https://github.com/Zunia-Lab/zunia-extension',
+            },
+            {
+              label: 'Mobile',
+              href: 'https://github.com/Zunia-Lab/zunia-mobile',
+            },
+            {
+              label: 'Brand',
+              href: 'https://github.com/Zunia-Lab/zunia-brand',
+            },
           ],
         },
         {
           title: 'Developers',
           items: [
-            {label: 'Chain Registry', href: 'https://github.com/Zunia-Lab/zunia-chain-registry'},
+            {
+              label: 'Chain Registry',
+              href: 'https://github.com/Zunia-Lab/zunia-chain-registry',
+            },
             {label: 'SDK', to: '/docs/connect/sdk'},
             {label: 'Provider API', to: '/docs/connect/dapp-api'},
-            {label: 'Brand Assets', href: 'https://github.com/Zunia-Lab/zunia-brand'},
+            {label: 'WalletConnect', to: '/docs/connect/walletconnect'},
           ],
         },
         {
-          title: 'Community',
+          title: 'Trust',
           items: [
-            {label: 'GitHub', href: 'https://github.com/Zunia-Lab'},
-            {label: 'Contact', href: 'mailto:hello@zunialab.com'},
+            {label: 'Security model', to: '/docs/security/model'},
+            {
+              label: 'Disclosure',
+              href: 'https://github.com/Zunia-Lab/.github/blob/main/SECURITY.md',
+            },
+            {label: 'FAQ', to: '/docs/faq'},
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Zunia Lab.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Zunia Lab. Apache 2.0.`,
     },
     prism: {
       theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
-      additionalLanguages: ['bash', 'json', 'typescript'],
+      darkTheme: prismThemes.oneDark,
+      additionalLanguages: ['bash', 'json', 'typescript', 'toml'],
     },
   } satisfies Preset.ThemeConfig,
 };
