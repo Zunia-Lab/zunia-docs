@@ -9,7 +9,7 @@ const config: Config = {
   future: {
     v4: true,
   },
-  url: 'https://docs.zuniawallet.com',
+  url: 'https://docs.zunialab.com',
   baseUrl: '/',
   organizationName: 'Zunia-Lab',
   projectName: 'zunia-docs',
@@ -80,8 +80,13 @@ const config: Config = {
           position: 'left',
         },
         {
-          href: 'https://zuniawallet.com',
+          href: 'https://zunialab.com',
           label: 'Website',
+          position: 'right',
+        },
+        {
+          href: 'https://x.com/ZuniaLab',
+          label: 'X',
           position: 'right',
         },
         {
@@ -97,7 +102,7 @@ const config: Config = {
         {
           title: 'Product',
           items: [
-            {label: 'Website', href: 'https://zuniawallet.com'},
+            {label: 'Website', href: 'https://zunialab.com'},
             {
               label: 'Extension',
               href: 'https://github.com/Zunia-Lab/zunia-extension',
@@ -108,7 +113,7 @@ const config: Config = {
             },
             {
               label: 'Brand',
-              href: 'https://github.com/Zunia-Lab/zunia-brand',
+              href: 'https://zunialab.com/brand',
             },
           ],
         },
@@ -130,7 +135,7 @@ const config: Config = {
             {label: 'Security model', to: '/docs/security/model'},
             {
               label: 'Disclosure',
-              href: 'https://github.com/Zunia-Lab/.github/blob/main/SECURITY.md',
+              href: 'https://zunialab.com/legal/disclosure',
             },
             {label: 'FAQ', to: '/docs/faq'},
           ],
