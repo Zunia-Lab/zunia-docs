@@ -21,4 +21,4 @@ Hosting regions TBD (Fly/Railway/Vercel). Document SCCs when vendors process EU 
 
 ## Data subject requests
 
-Email hello@zunialab.com — process access / erasure for server-side records. On-device keys are user-controlled; erasure = uninstall / wipe device.
+Email dev@zunialab.com. Process access and erasure for server-side records. On-device keys are user-controlled; erasure means uninstall or wipe the device.

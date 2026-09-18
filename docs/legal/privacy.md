@@ -33,4 +33,4 @@ TBD — push tokens deleted on unsubscribe / device revoke; support mail per ord
 
 ## GDPR / rights
 
-See [GDPR data map](./gdpr-data-map.md). Contact: hello@zunialab.com
+See [GDPR data map](./gdpr-data-map.md). Contact: dev@zunialab.com

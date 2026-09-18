@@ -29,4 +29,4 @@ Public docs describe the **product direction**. Many features below are **roadma
 
 ## Need help?
 
-Email [hello@zunialab.com](mailto:hello@zunialab.com) or open an issue on [GitHub](https://github.com/Zunia-Lab).
+Email [dev@zunialab.com](mailto:dev@zunialab.com) or open an issue on [GitHub](https://github.com/Zunia-Lab).
