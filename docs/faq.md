@@ -1,25 +1,61 @@
+---
+title: FAQ
+---
+
 # FAQ
 
-:::info Roadmap honesty
-Answers describe intended product behavior. Items marked **coming soon** are not available in a public release yet.
-:::
+## Is Zunia in the stores?
+
+No. Chrome, Edge, Firefox, App Store and Play Store listings are not submitted. Load a build from GitHub. See [Install the extension](./use-wallet/extension.md) and [Install the mobile wallet](./use-wallet/mobile.md).
 
 ## Can I use the same wallet on desktop and phone?
 
-**Coming soon.** The plan is: import the same recovery phrase on both. Keys stay on each device; Zunia does not sync keys through a server.
+Yes. Import the same recovery phrase on the second device. Each device holds its own encrypted copy. Zunia does not sync keys through a server.
 
-## Which chains are supported?
+## How does a website connect?
 
-**Coming soon for end users.** The chain registry targets forty-plus IBC chains from the Cosmos ecosystem (including Safrochain metadata), updatable without an app release. Custom chains by RPC are planned.
+The JavaScript SDK talks to the extension (`window.zunia`), or to the phone through a QR code and a relay, or to other wallets through WalletConnect. Start at the [quickstart](./get-started/quickstart.md).
+
+## Can I sign in without sending a transaction?
+
+Yes. [Sign in with Zunia](./integrate/sign-in.md) is an ADR-036 message bound to your domain. Your server checks it with `verifySignIn`.
+
+## I scanned a WalletConnect code with Zunia mobile and nothing signs.
+
+Expected. The app can open a WalletConnect session. It does not sign those requests yet. Use the Zunia QR (Connect with Zunia) instead.
+
+## Where is the relay?
+
+You run it. [zunia-backend](https://github.com/Zunia-Lab/zunia-backend) implements `zunia.connect.v2`. Nothing is deployed at `api.zunialab.com`.
+
+## Are the SDKs on npm?
+
+Not yet. Version 0.1.0 is tagged in the repo and waiting on the `zunialab` npm org. Build from [zunia-sdk](https://github.com/Zunia-Lab/zunia-sdk) until then.
+
+## Which chains work?
+
+The bundled catalog is [zunia-chain-registry](https://github.com/Zunia-Lab/zunia-chain-registry). You can add a network by hand or a dApp can suggest one. Endpoints must be HTTPS.
 
 ## Does Zunia charge fees?
 
-The wallet is intended to be free. You pay only the network fee for each transaction, shown before you sign. Zunia takes no cut of transfers or staking rewards.
+No. You pay the network fee shown before you sign. Zunia takes no cut of transfers or staking rewards.
 
-## Is Zunia open source?
+## Is there a web dashboard I can paste my phrase into?
 
-Yes. Product repositories are public under [github.com/Zunia-Lab](https://github.com/Zunia-Lab). Builds and store listings roll out as each surface reaches MVP.
+No, and there must never be. The dashboard repo is a watch-only scaffold and is not deployed. Signing keys stay in the extension or the phone.
 
-## Can I use the web dashboard with my seed phrase?
+## Has Zunia been audited?
 
-**No.** The dashboard is watch-only, extension-bridged, or WalletConnect-linked. Signing keys must never be pasted into the browser.
+No. Do not claim otherwise.
+
+## Is it open source?
+
+Yes. [github.com/Zunia-Lab](https://github.com/Zunia-Lab).
+
+## How do I report a vulnerability?
+
+[security@zunialab.com](mailto:security@zunialab.com), not a public issue.
+
+## How do I get help?
+
+[dev@zunialab.com](mailto:dev@zunialab.com) or a GitHub issue on the relevant repo.

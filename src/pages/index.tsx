@@ -11,22 +11,22 @@ import styles from './index.module.css';
 const sections = [
   {
     title: 'Get started',
-    body: 'Install the extension or mobile wallet and open your first account.',
-    to: '/docs/getting-started/install-extension',
+    body: 'How the wallet, the SDKs and the relay fit together, then a five-minute connect.',
+    to: '/docs/intro',
   },
   {
-    title: 'Connect a dApp',
-    body: 'Drop-in provider API, WalletConnect, and the TypeScript SDK.',
-    to: '/docs/connect/sdk',
+    title: 'Integrate',
+    body: 'Extension, React, sign-in, live events, QR pairing and WalletConnect.',
+    to: '/docs/get-started/quickstart',
   },
   {
-    title: 'IBC & staking',
-    body: 'Transfers, channels, fees, and delegation flows across Cosmos.',
-    to: '/docs/ibc/transfers',
+    title: 'Use the wallet',
+    body: 'Install a build, manage keys and networks, send, IBC and stake.',
+    to: '/docs/use-wallet/extension',
   },
   {
     title: 'Security',
-    body: 'Self-custody model, key storage, and responsible disclosure.',
+    body: 'Self-custody, per-origin grants, domain-bound sign-in, and what the relay sees.',
     to: '/docs/security/model',
   },
 ] as const;
@@ -49,19 +49,19 @@ function HomepageHeader() {
         </Heading>
         <p className={styles.subtitle}>{siteConfig.tagline}</p>
         <p className={styles.lede}>
-          Guides for the browser extension, mobile wallet, IBC transfers, staking,
-          and the dApp connect SDK. Keys stay on device.
+          Guides for connecting a site to Zunia, signing in without a transaction,
+          and using the extension or the phone. Keys stay on the device.
         </p>
         <div className={styles.actions}>
           <Link
             className={clsx('button button--primary button--lg', styles.cta)}
             to="/docs/intro">
-            Get started
+            How it works
           </Link>
           <Link
             className={clsx('button button--outline button--lg', styles.ghost)}
-            to="/docs/connect/sdk">
-            Integrate SDK
+            to="/docs/get-started/quickstart">
+            Connect a site
           </Link>
         </div>
       </div>
@@ -91,7 +91,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title="Documentation"
-      description="Multi-chain Cosmos wallet documentation for Zunia extension, mobile, and SDK.">
+      description="Connect a dApp to the Zunia wallet, or use the extension and the phone.">
       <HomepageHeader />
       <main>
         <SectionGrid />

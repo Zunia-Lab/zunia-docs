@@ -9,13 +9,9 @@
 [![License](https://img.shields.io/github/license/Zunia-Lab/zunia-docs)](LICENSE)
 [![Website](https://img.shields.io/badge/website-zunialab.com-FF1B0C)](https://zunialab.com)
 
-## Overview
+## What this site covers
 
-Docusaurus site covering install guides, wallet basics, IBC, dApp API, chain registry, security, and brand assets.
-
-## Status
-
-In development.
+How a dApp connects (JS SDK, sign-in, events, QR, WalletConnect), the `window.zunia` and protocol references, the security model, and how to use the extension and the phone. Legal drafts, brand and the chain registry sit at the bottom of the sidebar.
 
 ## Related repositories
 
@@ -24,29 +20,35 @@ In development.
 | [zunia-website](https://github.com/Zunia-Lab/zunia-website) | Marketing site |
 | [zunia-extension](https://github.com/Zunia-Lab/zunia-extension) | Browser extension |
 | [zunia-mobile](https://github.com/Zunia-Lab/zunia-mobile) | Mobile wallet |
+| [zunia-sdk](https://github.com/Zunia-Lab/zunia-sdk) | JavaScript SDKs |
+| [zunia-backend](https://github.com/Zunia-Lab/zunia-backend) | Connect relay |
 | [zunia-chain-registry](https://github.com/Zunia-Lab/zunia-chain-registry) | Chain metadata |
 | [zunia-brand](https://github.com/Zunia-Lab/zunia-brand) | Brand assets |
 
 ## Quick start
 
 ```bash
-npm install
-npm start
+pnpm install
+pnpm start
 ```
 
-## Development
-
-Edit Markdown under `docs/`. Sidebar is defined in `sidebars.ts`. Theme colors live in `src/css/custom.css`.
+Edit Markdown under `docs/`. The sidebar is `sidebars.ts`. Theme colors live in `src/css/custom.css`. A broken link fails `pnpm build`.
 
 | Command | Description |
 |---------|-------------|
-| `npm start` | Local docs server |
-| `npm run build` | Static production build |
-| `npm run serve` | Serve the build locally |
+| `pnpm start` | Local docs server |
+| `pnpm build` | Static production build |
+| `pnpm serve` | Serve the build locally |
+| `pnpm typecheck` | TypeScript check |
 
 ## Deployment
 
-Deploy the static `build/` output to Vercel (or similar) and attach `docs.zunialab.com`. See workspace [DEPLOY.md](../DEPLOY.md).
+```bash
+pnpm build
+vercel --prod
+```
+
+Attach `docs.zunialab.com` in the Vercel project. Workspace notes: [DEPLOY.md](../DEPLOY.md).
 
 ## Contributing
 

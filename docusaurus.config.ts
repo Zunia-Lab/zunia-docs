@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Zunia Docs',
-  tagline: 'Multi-chain Cosmos wallet documentation',
+  tagline: 'Connect a dApp to the Zunia wallet, or use the wallet itself.',
   favicon: 'img/favicon.ico',
   future: {
     v4: true,
@@ -14,6 +14,13 @@ const config: Config = {
   organizationName: 'Zunia-Lab',
   projectName: 'zunia-docs',
   onBrokenLinks: 'throw',
+  markdown: {
+    mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+    },
+  },
+  themes: ['@docusaurus/theme-mermaid'],
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -33,6 +40,27 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {from: '/docs/getting-started/install-extension', to: '/docs/use-wallet/extension'},
+          {from: '/docs/getting-started/install-mobile', to: '/docs/use-wallet/mobile'},
+          {from: '/docs/wallet/keys-and-accounts', to: '/docs/use-wallet/keys'},
+          {from: '/docs/wallet/fees', to: '/docs/use-wallet/networks'},
+          {from: '/docs/wallet/custom-chains', to: '/docs/use-wallet/networks'},
+          {from: '/docs/ibc/transfers', to: '/docs/use-wallet/send-and-ibc'},
+          {from: '/docs/ibc/staking', to: '/docs/use-wallet/staking'},
+          {from: '/docs/connect/sdk', to: '/docs/get-started/quickstart'},
+          {from: '/docs/connect/dapp-api', to: '/docs/reference/provider'},
+          {from: '/docs/connect/native-ws', to: '/docs/integrate/qr'},
+          {from: '/docs/connect/walletconnect', to: '/docs/integrate/walletconnect'},
+          {from: '/docs/connect/env-matrix', to: '/docs/get-started/compatibility'},
+        ],
+      },
+    ],
+  ],
   themeConfig: {
     image: 'img/zunia-social-card.png',
     metadata: [
@@ -43,7 +71,7 @@ const config: Config = {
       {
         name: 'description',
         content:
-          'Guides for the Zunia browser extension, mobile wallet, IBC, staking, and dApp SDK.',
+          'How to connect a site to the Zunia wallet (JS SDK, sign-in, QR, events) and how to use the extension and the phone.',
       },
     ],
     colorMode: {
@@ -75,7 +103,7 @@ const config: Config = {
           label: 'Documentation',
         },
         {
-          to: '/docs/connect/sdk',
+          to: '/docs/get-started/quickstart',
           label: 'SDK',
           position: 'left',
         },
@@ -124,9 +152,9 @@ const config: Config = {
               label: 'Chain Registry',
               href: 'https://github.com/Zunia-Lab/zunia-chain-registry',
             },
-            {label: 'SDK', to: '/docs/connect/sdk'},
-            {label: 'Provider API', to: '/docs/connect/dapp-api'},
-            {label: 'WalletConnect', to: '/docs/connect/walletconnect'},
+            {label: 'Quickstart', to: '/docs/get-started/quickstart'},
+            {label: 'Provider API', to: '/docs/reference/provider'},
+            {label: 'Connect v2', to: '/docs/reference/connect-v2'},
           ],
         },
         {

@@ -1,32 +1,64 @@
 ---
 sidebar_position: 1
+title: How Zunia works
 ---
 
-# Welcome to Zunia
+# How Zunia works
 
-Zunia is a multi-chain wallet for the Cosmos ecosystem. It is being built as a browser extension and a mobile app on the same keys, with native IBC support and no custodian.
+Zunia is a non-custodial Cosmos wallet. Keys stay on the device that created or imported them. A dApp never sees a seed phrase. It asks the wallet for addresses, signatures, and live account events.
 
-:::caution Status
-Public docs describe the **product direction**. Many features below are **roadmap / coming soon**, not yet shipped on mainnet stores. Prefer repository `README` and ADRs for what is implemented today.
-:::
+There are two products you can install, and three ways a site can reach a wallet:
 
-## What you will be able to do
+| Product | What it is | Status |
+|---------|------------|--------|
+| [Browser extension](https://github.com/Zunia-Lab/zunia-extension) | Chrome, Edge, Firefox and Safari (macOS and iOS) | Builds exist. Not in any store yet. |
+| [Mobile wallet](https://github.com/Zunia-Lab/zunia-mobile) | iOS and Android | Builds exist. Not in any store yet. WalletConnect sessions are accepted; WalletConnect signing is not implemented. |
 
-- Hold keys on your device (non-custodial)
-- Send IBC transfers in one step *(roadmap)*
-- Stake from the same screen *(roadmap)*
-- Connect to Cosmos dApps from extension or mobile *(SDK / provider stubs in progress)*
-- Add custom chains by RPC endpoint *(roadmap)*
+A website talks to those products through the [JavaScript SDKs](./get-started/quickstart.md):
 
-## Products
+1. **Extension.** The wallet injects `window.zunia`. This is the path to use in a desktop browser when Zunia is installed.
+2. **Phone, by QR code.** The site shows a code, Zunia mobile scans it, and both sides talk through a relay. Messages are encrypted end to end. Zunia does not host a public relay yet; you run [zunia-backend](https://github.com/Zunia-Lab/zunia-backend) yourself.
+3. **WalletConnect v2.** For other wallets. Do not use this to reach Zunia mobile until that app signs WalletConnect requests.
 
-| Product | Description | Status |
-|---------|-------------|--------|
-| [Browser extension](https://github.com/Zunia-Lab/zunia-extension) | Chrome and Firefox extension with `window.zunia` provider | In development |
-| [Mobile wallet](https://github.com/Zunia-Lab/zunia-mobile) | iOS and Android with WalletConnect | In development |
-| [Web dashboard](https://github.com/Zunia-Lab/zunia-dashboard) | Portfolio at wallet.zunialab.com (watch-only / WC; no browser keys) | Scaffold |
-| [Chain registry](https://github.com/Zunia-Lab/zunia-chain-registry) | Community chain metadata | Active |
+```mermaid
+sequenceDiagram
+  participant Dapp as dApp SDK
+  participant Ext as Extension
+  participant Relay as Relay
+  participant Phone as Zunia mobile
+  Dapp->>Ext: enable, signIn, signAmino
+  Ext-->>Dapp: accounts and events
+  Dapp->>Relay: POST /v1/connect/sessions
+  Relay-->>Dapp: sessionId, dappToken, walletJoinToken
+  Dapp->>Dapp: QR with join token and public key
+  Phone->>Relay: WebSocket with join token
+  Note over Dapp,Phone: X25519, same 6-digit code, then encrypted frames
+  Phone-->>Dapp: accounts and signatures
+```
 
-## Need help?
+## What you can do today
 
-Email [dev@zunialab.com](mailto:dev@zunialab.com) or open an issue on [GitHub](https://github.com/Zunia-Lab).
+- Create or import a wallet in the extension or the mobile app, on the same recovery phrase if you want both.
+- Connect a web dApp to the extension, restore the session after a reload, and hear account switches, locks and revocations live.
+- Sign in with no transaction: the wallet signs a message bound to your site, and your server checks it with `verifySignIn`.
+- Sign Amino and Direct transactions and broadcast them yourself (CosmJS or your own client).
+- Pair Zunia mobile with a site over QR when you run the relay.
+- Send, swap, stake and vote from the extension itself, using the WebAssembly kernel.
+
+## What is not ready
+
+- Store listings (Chrome Web Store, Edge Add-ons, Firefox AMO, App Store, Play Store).
+- A hosted Zunia relay. QR pairing needs a relay you run.
+- A Flutter SDK for mobile dApps. The existing `zunia_sdk` package is deep links and a button. The v2 client is planned.
+- WalletConnect signing in Zunia mobile.
+- Hardware wallets (Ledger, Keystone).
+- A public web dashboard. The dashboard repo is a scaffold, and it must never receive a seed phrase.
+- An independent security audit. None has been completed.
+
+## Next
+
+- [Connect a site in five minutes](./get-started/quickstart.md)
+- [Browser and mobile status](./get-started/compatibility.md)
+- [Use the wallet](./use-wallet/extension.md)
+
+Need help? Email [dev@zunialab.com](mailto:dev@zunialab.com). For vulnerabilities, write [security@zunialab.com](mailto:security@zunialab.com) instead of opening a public issue.
