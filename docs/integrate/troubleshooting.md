@@ -59,4 +59,4 @@ Safari never prompts for `https://*/*`. The user allows it under Settings, Apps,
 
 ## Packages 404 on npm
 
-0.1.0 is not published yet. Build from the [zunia-sdk](https://github.com/Zunia-Lab/zunia-sdk) repository. See the [quickstart](../get-started/quickstart.md).
+`@zunialab/sdk-web`, `@zunialab/sdk-react`, `@zunialab/sdk-core` and `@zunialab/interchain` are public at 0.1.0. A 404 means the name or version does not match, or the install is using a registry other than `registry.npmjs.org`. See the [quickstart](../get-started/quickstart.md).

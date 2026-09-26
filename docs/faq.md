@@ -30,7 +30,7 @@ You run it. [zunia-backend](https://github.com/Zunia-Lab/zunia-backend) implemen
 
 ## Are the SDKs on npm?
 
-Not yet. Version 0.1.0 is tagged in the repo and waiting on the `zunialab` npm org. Build from [zunia-sdk](https://github.com/Zunia-Lab/zunia-sdk) until then.
+Yes. `@zunialab/sdk-web`, `@zunialab/sdk-react`, `@zunialab/sdk-core` and `@zunialab/interchain` are on npm at 0.1.0.
 
 ## Which chains work?
 

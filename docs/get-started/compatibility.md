@@ -4,7 +4,7 @@ title: Compatibility
 
 # Compatibility and status
 
-Honest status for each surface. Nothing here is listed in a public store.
+Honest status for each surface. The extension and the phone apps are not in a public store yet. The JavaScript packages are on npm.
 
 ## Browsers
 
@@ -37,10 +37,10 @@ Pair Zunia mobile with a site by QR, not by WalletConnect, until signing exists.
 
 | Package | Install | Status |
 |---------|---------|--------|
-| `@zunialab/sdk-web` | Browser dApps | 0.1.0, ready, not on npm yet |
-| `@zunialab/sdk-react` | React 18 or 19 | 0.1.0, ready, not on npm yet |
-| `@zunialab/sdk-core` | Servers and wallets | 0.1.0, ready, not on npm yet |
-| `@zunialab/interchain` | IBC routes and memos | 0.1.0, ready, not on npm yet |
+| `@zunialab/sdk-web` | Browser dApps | 0.1.0 on npm |
+| `@zunialab/sdk-react` | React 18 or 19 | 0.1.0 on npm |
+| `@zunialab/sdk-core` | Servers and wallets | 0.1.0 on npm |
+| `@zunialab/interchain` | IBC routes and memos | 0.1.0 on npm |
 | `zunia_sdk` (Dart) | Flutter dApps | Deep links and a button. The v2 session client is planned. |
 
 ## Relay

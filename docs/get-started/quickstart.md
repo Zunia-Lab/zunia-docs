@@ -6,20 +6,13 @@ title: Quickstart
 
 This page gets a React app talking to the Zunia extension: connect, restore after a reload, and sign in. The same session object signs transactions with CosmJS.
 
-The packages are `@zunialab/sdk-web`, `@zunialab/sdk-react` and `@zunialab/sdk-core` at **0.1.0**. They are not on npm yet. Until the `v0.1.0` tag is published, build them from [zunia-sdk](https://github.com/Zunia-Lab/zunia-sdk):
-
-```bash
-git clone https://github.com/Zunia-Lab/zunia-sdk.git
-cd zunia-sdk
-pnpm install
-pnpm build
-```
-
-Then add the workspace packages to your app, or `pnpm add` from the built `packages/*/`. After publish:
+Install 0.1.0 from npm:
 
 ```bash
 pnpm add @zunialab/sdk-react @zunialab/sdk-web
 ```
+
+A server that checks sign-in uses `@zunialab/sdk-core`. IBC routes and packet memos are `@zunialab/interchain`.
 
 You also need a Zunia extension build. Clone [zunia-extension](https://github.com/Zunia-Lab/zunia-extension), run `pnpm install && pnpm build:chrome`, and load `.output/chrome-mv3` as an unpacked extension. Create a wallet there before you click Connect.
 
