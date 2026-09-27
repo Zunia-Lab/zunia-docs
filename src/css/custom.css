@@ -298,15 +298,15 @@ html[data-theme='dark'] .navbar__logo {
 
 .button--primary,
 a.button--primary {
-  background: var(--z-accent);
-  color: #f6f3ef !important;
-  box-shadow: 0 6px 14px rgba(200, 16, 24, 0.2);
+  background: #a81818;
+  color: #ffffff !important;
+  box-shadow: 0 6px 14px rgba(168, 24, 24, 0.28);
 }
 
 .button--primary:hover,
 a.button--primary:hover {
-  filter: brightness(1.05);
-  color: #f6f3ef !important;
+  filter: brightness(1.08);
+  color: #ffffff !important;
   transform: translateY(-1px);
 }
 
