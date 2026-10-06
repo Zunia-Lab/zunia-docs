@@ -30,6 +30,8 @@ When the funds sit on another chain, they are transferred to Osmosis and swapped
 
 If the swap then fails on Osmosis, the amount swapped comes back. The commission does not.
 
+Some pairs cannot be swapped in one step from another chain. The **Swap** screen then asks you to move the tokens to Osmosis first, with Send. That transfer carries no commission. The swap that follows starts on Osmosis, and its commission is taken there, in the same transaction.
+
 ## No commission
 
 Sends, IBC transfers and staking carry no Zunia commission. You pay only the network fee. Zunia takes no cut of staking rewards.
