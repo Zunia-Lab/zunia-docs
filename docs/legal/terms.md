@@ -6,7 +6,7 @@ title: Terms of Service
 
 **Status: DRAFT — not legal advice. Not in force until counsel review and publication.**
 
-Last updated: 2026-08-31 (draft)
+Last updated: 2026-10-06 (draft)
 
 ## 1. Parties
 
@@ -22,12 +22,18 @@ Draft placeholders: age requirements, prohibited illicit use, sanctions complian
 
 ## 4. Risks
 
-Blockchain transactions are irreversible. Smart contract, bridge, and third-party dApp risk sits with you. Network fees are paid to validators / chains, not as a Zunia cut (intended policy).
+Blockchain transactions are irreversible. Smart contract, bridge, and third-party dApp risk sits with you.
 
-## 5. Disclaimers
+## 5. Fees
+
+The wallet is free to install, with no premium tier and no token. Network fees are paid to validators / chains, not to Zunia. Sends, IBC transfers and staking carry no Zunia commission: you pay only the network fee.
+
+Swaps made in the Zunia wallet carry a 0.5% commission, sent to Zunia. It is taken in the same transaction as the swap, in the token you sell, and shown before you sign. For a cross-chain swap (funds on another chain, swapped on Osmosis), the commission is taken on the starting chain when the transfer is sent. If the swap then fails on Osmosis, the amount swapped comes back; the commission does not.
+
+## 6. Disclaimers
 
 Software provided "as is" while in beta / pre-release. Limit liability clauses TBD by counsel.
 
-## 6. Contact
+## 7. Contact
 
 dev@zunialab.com

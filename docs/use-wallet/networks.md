@@ -26,3 +26,5 @@ Turn it off and the wallet stops those requests.
 ## Fees
 
 Network fees go to validators, not to Zunia. Before you sign, the screen shows the fee denom, the amount and the gas. Advanced gas price lives under **Settings & security** → **Preferences**. Defaults come from the registry.
+
+A swap made in the wallet also carries a 0.5% Zunia commission. See [Fees](./fees.md).
