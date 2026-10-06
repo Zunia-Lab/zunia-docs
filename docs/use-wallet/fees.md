@@ -10,7 +10,7 @@ The wallet is free to install. There is no premium tier and no token.
 |--------|-------------|------------------|
 | Send, IBC transfer | Yes | None |
 | Stake, claim, redelegate, undelegate | Yes | None |
-| Swap in the Zunia wallet | Yes | 0.5% |
+| Swap with the extension's **Swap** screen | Yes | 0.5% |
 
 ## Network fee
 
@@ -18,7 +18,7 @@ Every transaction pays a network fee to the chain. It goes to validators, not to
 
 ## Swap commission
 
-A swap made in the Zunia wallet carries a 0.5% commission, sent to Zunia.
+A swap made with the **Swap** screen of the Zunia browser extension carries a 0.5% commission, sent to Zunia.
 
 - It is taken in the same transaction as the swap.
 - It is paid in the token you sell.
@@ -33,5 +33,7 @@ If the swap then fails on Osmosis, the amount swapped comes back. The commission
 ## No commission
 
 Sends, IBC transfers and staking carry no Zunia commission. You pay only the network fee. Zunia takes no cut of staking rewards.
+
+A swap you make on a dApp and only sign with Zunia carries no Zunia commission.
 
 The commission shown next to a validator in Earn is set by that validator. It is not Zunia's.

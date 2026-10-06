@@ -22,6 +22,6 @@ Sign on the device. The wallet broadcasts from the LCD you configured for that c
 
 **Swap** is a separate home action. It uses the same review + sign path. It needs the WASM kernel; if the kernel failed to load, Confirm stays disabled and the screen says why.
 
-A swap carries a 0.5% Zunia commission, taken in the same transaction from the token you sell. The review screen shows it before you sign. Sends and IBC transfers carry no commission. [Fees](./fees.md) covers swaps that start on another chain.
+A swap made with **Swap** in the extension carries a 0.5% Zunia commission, taken in the same transaction from the token you sell. The review screen shows it before you sign. Sends and IBC transfers carry no commission. [Fees](./fees.md) covers swaps that start on another chain.
 
 Do not paste a seed phrase into any website, including a future `wallet.zunialab.com` dashboard. That surface is watch-only by design and is not deployed.
