@@ -61,4 +61,4 @@ sequenceDiagram
 - [Browser and mobile status](./get-started/compatibility.md)
 - [Use the wallet](./use-wallet/extension.md)
 
-Need help? Email [dev@zunialab.com](mailto:dev@zunialab.com). For vulnerabilities, write [security@zunialab.com](mailto:security@zunialab.com) instead of opening a public issue.
+Need help? Email [dev@zunialab.com](mailto:dev@zunialab.com) or [zunialab@gmail.com](mailto:zunialab@gmail.com). For vulnerabilities, write to dev@zunialab.com instead of opening a public issue.

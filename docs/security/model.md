@@ -57,4 +57,4 @@ Repositories are public under [github.com/Zunia-Lab](https://github.com/Zunia-La
 
 ## Disclosure
 
-Email [security@zunialab.com](mailto:security@zunialab.com). Do not open a public issue for a vulnerability. See [SECURITY.md](https://github.com/Zunia-Lab/.github/blob/main/SECURITY.md).
+Email [dev@zunialab.com](mailto:dev@zunialab.com). Do not open a public issue for a vulnerability. See [SECURITY.md](https://github.com/Zunia-Lab/.github/blob/main/SECURITY.md).

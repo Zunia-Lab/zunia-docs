@@ -31,4 +31,4 @@ This site ships the docs subbrand lockups and mark under `/img/`:
 
 Do not modify the mark, apply gradients to the mark, or change wordmark spacing. See the brand README for full guidelines.
 
-Questions: [dev@zunialab.com](mailto:dev@zunialab.com)
+Questions: [zunialab@gmail.com](mailto:zunialab@gmail.com) or [dev@zunialab.com](mailto:dev@zunialab.com)

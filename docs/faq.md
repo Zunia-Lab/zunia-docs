@@ -54,8 +54,8 @@ Yes. [github.com/Zunia-Lab](https://github.com/Zunia-Lab).
 
 ## How do I report a vulnerability?
 
-[security@zunialab.com](mailto:security@zunialab.com), not a public issue.
+[dev@zunialab.com](mailto:dev@zunialab.com), not a public issue.
 
 ## How do I get help?
 
-[dev@zunialab.com](mailto:dev@zunialab.com) or a GitHub issue on the relevant repo.
+[dev@zunialab.com](mailto:dev@zunialab.com), [zunialab@gmail.com](mailto:zunialab@gmail.com), or a GitHub issue on the relevant repo.
