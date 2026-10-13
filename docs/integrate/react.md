@@ -17,7 +17,7 @@ import { ConnectPairingModal, ConnectWithZuniaButton, useZuniaSession } from "@z
 
 const options = {
   chains: ["cosmoshub-4"],
-  // apiBase: "https://relay.example.com", // only when you run a relay
+  apiBase: "https://api.zunialab.com", // QR pairing with Zunia mobile; leave out to offer the extension only
 };
 
 export function Wallet() {
@@ -28,6 +28,7 @@ export function Wallet() {
     return (
       <>
         <p>{zunia.accounts[0]?.address}</p>
+        {zunia.locked && <button onClick={() => zunia.unlock().catch(() => {})}>Unlock Zunia</button>}
         <button onClick={() => zunia.disconnect()}>Disconnect</button>
       </>
     );
@@ -59,10 +60,10 @@ The hook re-renders when the wallet switches accounts, locks, unlocks or revokes
 | `status`, `transport` | See [events](./events.md). |
 | `accounts`, `chains` | What your site may use right now. |
 | `pairing`, `verificationCode` | For the QR dialog. |
-| `error` | Last `ZuniaConnectError`. |
-| `connected`, `connecting`, `restoring` | Shortcuts. |
-| `connect`, `disconnect`, `restore`, `signIn` | Actions. |
-| `session` | The underlying session (`getOfflineSigner`, `on`, …). |
+| `error` | Last `ZuniaConnectError`. `explainZuniaError(error)` puts it in words for your UI. |
+| `connected`, `locked`, `connecting`, `restoring` | Shortcuts. `connected` stays true while `locked`. After a restore that found the wallet locked, `accounts` is empty until the user unlocks. |
+| `connect`, `disconnect`, `restore`, `unlock`, `signIn` | Actions. `unlock` opens the wallet's unlock window and keeps your site's grant: call it from a click. |
+| `session` | The underlying session (`getOfflineSignerFor`, `on`, …). |
 
 Call the hook once near the root, or create `const session = createZuniaSession()` at module scope and pass `{ session }` to every caller.
 

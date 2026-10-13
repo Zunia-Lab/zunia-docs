@@ -6,7 +6,7 @@ title: Quickstart
 
 This page gets a React app talking to the Zunia extension: connect, restore after a reload, and sign in. The same session object signs transactions with CosmJS.
 
-Install 0.1.0 from npm:
+Install from npm:
 
 ```bash
 pnpm add @zunialab/sdk-react @zunialab/sdk-web
@@ -14,7 +14,7 @@ pnpm add @zunialab/sdk-react @zunialab/sdk-web
 
 A server that checks sign-in uses `@zunialab/sdk-core`. IBC routes and packet memos are `@zunialab/interchain`.
 
-You also need a Zunia extension build. Clone [zunia-extension](https://github.com/Zunia-Lab/zunia-extension), run `pnpm install && pnpm build:chrome`, and load `.output/chrome-mv3` as an unpacked extension. Create a wallet there before you click Connect.
+You also need the Zunia extension. Install it from the [Chrome Web Store](https://chromewebstore.google.com/detail/zunia/ngokakoekdogobjmokipglbcclelgajk), or [build it](../use-wallet/extension.md) for another browser. Create a wallet there before you click Connect.
 
 ## 1. Connect
 
@@ -27,6 +27,9 @@ export function Connect() {
   const zunia = useZuniaSession({ restore: options });
 
   if (zunia.restoring) return null;
+  if (zunia.locked) {
+    return <button onClick={() => zunia.unlock().catch(() => {})}>Unlock Zunia</button>;
+  }
   if (zunia.connected) {
     return <p>Connected as {zunia.accounts[0]?.address}</p>;
   }
@@ -40,6 +43,8 @@ export function Connect() {
 ```
 
 `useZuniaSession({ restore: options })` reattaches after a reload without opening a window. `connect` asks the extension for those chains. The user approves in the toolbar popup (Chrome also draws an in-page prompt when it can tell the page is visible).
+
+If the wallet was locked when the page loaded, `zunia.locked` is true and `accounts` stays empty. `unlock()` opens the unlock window and keeps your site's grant. Call it from a click.
 
 ## 2. Sign in (no transaction)
 
@@ -74,11 +79,19 @@ The wallet refuses a message whose domain is not the site asking. See [Sign in w
 ```ts
 import { SigningStargateClient } from "@cosmjs/stargate";
 
-const signer = zunia.session.getOfflineSigner("cosmoshub-4");
+const [account] = zunia.accounts;
+const messages = [
+  {
+    typeUrl: "/cosmos.bank.v1beta1.MsgSend",
+    value: { fromAddress: account.address, toAddress: recipient, amount: [{ denom: "uatom", amount: "1000" }] },
+  },
+];
+const signer = zunia.session.getOfflineSignerFor("cosmoshub-4", { messages, memo });
 const client = await SigningStargateClient.connectWithSigner(rpcUrl, signer);
+await client.signAndBroadcast(account.address, messages, "auto", memo);
 ```
 
-Results are `Uint8Array` and `bigint` on every transport.
+`getOfflineSignerFor` hands CosmJS the signer the connected Zunia build can sign these messages with, so contract calls also work on older extension builds. Results are `Uint8Array` and `bigint` on every transport.
 
 ## Example
 

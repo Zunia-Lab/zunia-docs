@@ -6,7 +6,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Get started',
-      items: ['get-started/quickstart', 'get-started/compatibility'],
+      items: ['get-started/quickstart', 'get-started/compatibility', 'get-started/ai'],
     },
     {
       type: 'category',
@@ -50,6 +50,7 @@ const sidebars: SidebarsConfig = {
         'use-wallet/networks',
         'use-wallet/send-and-ibc',
         'use-wallet/staking',
+        'use-wallet/fees',
       ],
     },
     'faq',

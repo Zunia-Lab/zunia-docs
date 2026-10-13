@@ -37,13 +37,4 @@ Until that client exists, a Flutter dApp should use WalletConnect with another w
 
 It accepts WalletConnect sessions when a Cloud project id is set. It does not sign WalletConnect requests yet.
 
-Build it yourself:
-
-```bash
-git clone https://github.com/Zunia-Lab/zunia-mobile.git
-cd zunia-mobile
-flutter pub get
-flutter run
-```
-
-Stores are not submitted. Same recovery phrase as the extension if you want both devices.
+The app is in App Store and Google Play review. To build it yourself, see [Install the mobile wallet](../use-wallet/mobile.md): it needs zunia-core and zunia-ui checked out next to it. Same recovery phrase as the extension if you want both devices.

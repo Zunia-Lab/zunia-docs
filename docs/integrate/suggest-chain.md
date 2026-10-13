@@ -7,8 +7,9 @@ title: Suggest a chain
 If the wallet does not already know a chain, a site can propose it. The user sees **Add &lt;name&gt;** and the endpoints you chose. Nothing is saved until they approve.
 
 ```ts
-const zunia = await getZunia();
-await zunia.experimentalSuggestChain({
+import { getZunia } from "@zunialab/sdk-web";
+
+const chain = {
   chainId: "my-test-1",
   chainName: "My Testnet",
   rpc: "https://rpc.example.com",
@@ -26,14 +27,22 @@ await zunia.experimentalSuggestChain({
       gasPriceStep: { low: 0.01, average: 0.025, high: 0.04 },
     },
   ],
-  stakeCurrency: { coinDenom: "TEST", coinMinimalDenom: "utest", coinDecimals: 6 },
-});
+};
+
+// From a session connected to the extension
+await session.suggestChain(chain);
+
+// Or straight to the provider, before any connection
+const zunia = await getZunia();
+await zunia?.experimentalSuggestChain?.(chain);
 ```
+
+`session.suggestChain` works on the extension transport only. Over QR pairing or WalletConnect it throws `UNSUPPORTED`. Once the user has added the chain, call `connect` again with its chain id.
 
 The shape is the usual Keplr `ChainInfo`. The wallet keeps a smaller draft: name, chain id, RPC, REST, bech32 prefix, coin type, denom metadata and a gas price. Endpoints must be `https://` and must not contain credentials.
 
 If the chain is already in the bundled registry or was added earlier, the call returns without a prompt.
 
-A user can also add a network by hand: menu, **Manage networks**, then add. See [Networks](../use-wallet/networks.md).
+A user can also add a network by hand: menu, **Manage networks**, then **Add chain manually**. See [Networks](../use-wallet/networks.md).
 
 Only suggest endpoints you operate or trust. The wallet will send the user's addresses to them for balances and will broadcast through them when the user sends from the wallet itself.

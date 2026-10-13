@@ -11,13 +11,13 @@ A connected site should treat the wallet as the source of truth. The user can sw
 | Status | Meaning |
 |--------|---------|
 | `idle` | Nothing started. |
-| `connecting` | Looking for a wallet. |
-| `awaiting_wallet` | QR or WalletConnect link is waiting, or the extension window is open. |
+| `connecting` | Looking for a wallet, or waiting for the user to approve in the extension. |
+| `awaiting_wallet` | A QR code or WalletConnect link is waiting for the wallet to scan and approve it. |
 | `connected` | You have accounts. |
-| `locked` | Still granted, the wallet is locked. Requests wait for unlock. |
+| `locked` | Still granted, the wallet is locked. Requests wait for unlock. `session.unlock()`, called from a click, opens the unlock window. |
 | `reconnecting` | The relay socket dropped and is coming back. |
-| `disconnected` | You called `disconnect()`, the user revoked you, or the session expired. |
-| `error` | The last connect failed. See `error`. |
+| `disconnected` | You called `disconnect()`, the user revoked you, the session expired, or a connect failed (see `error`). |
+| `error` | Part of the type, but the SDK does not set it. A failed connect ends in `disconnected`, with the failure in `error`. |
 
 ```ts
 session.on("status", (status) => setStatus(status));
@@ -34,10 +34,12 @@ These are what `window.zunia` emits, and what the SDK forwards.
 
 | Event | When | Payload |
 |-------|------|---------|
-| `accountsChanged` | Active account changed or was renamed. Connected sites only. | New accounts |
+| `accountsChanged` | Active account changed or was renamed, or the wallet unlocked. Connected sites only. | None on `window.zunia`: read `getKey` again. The SDK does that and emits the new accounts. |
 | `chainChanged` | Chains granted to your origin changed. | Remaining chain ids |
 | `disconnect` | Access revoked or expired. | `null` for every chain, or `{ chainIds }` for those lost |
 | `locked` | The wallet locked. | none |
+
+A grant in the extension lasts 7 days. When it runs out, your site gets `disconnect` and has to connect again.
 
 After a reload, call `restore` (or `getConnectedChains()`). That does not unlock the wallet and does not open a window.
 
@@ -53,6 +55,6 @@ Any script on your origin can read these. Keep a strict Content Security Policy.
 
 ## Timeouts and drops
 
-Each connect and each signature waits 5 minutes by default (`timeoutMs`, `requestTimeoutMs`). Over QR pairing the SDK pings every 20 seconds, reconnects with backoff, and resends requests the relay had not confirmed. If the relay forgot the session, you get `SESSION_EXPIRED` and the user pairs again.
+Over QR pairing and WalletConnect, each connect and each signature waits 5 minutes by default (`timeoutMs`, `requestTimeoutMs`). In the extension, a prompt nobody answers expires after 5 minutes, and the SDK rejects with `TIMEOUT` (`reason: "prompt-expired"`). Over QR pairing the SDK pings every 20 seconds, reconnects with backoff, and resends requests the relay had not confirmed. If the relay forgot the session, you get `SESSION_EXPIRED` and the user pairs again.
 
-`disconnect()` from your page drops the transport and clears storage. It does not revoke the grant in the wallet. The user does that under **Connected dApps**.
+`disconnect()` from your page ends the session. On the extension it also revokes your site's grant for the session's chains (`window.zunia.disable`), so the next `connect` asks the user again. Over QR pairing it closes the relay session and deletes the stored one. The user can also revoke your site under **Connected dApps**.

@@ -17,7 +17,7 @@ Verify release artifacts against `SHA256SUMS` (and GPG signatures when the relea
 
 ## Browser extension
 
-Extension packaging must be rebuildable from a signed git tag. See the extension supply-chain notes in the workspace (`.github` / `zunia-extension/docs/reproducible-builds.md`) once published. Until then, treat store builds as **not yet claimable as reproducible**.
+Extension packaging must be rebuildable from a signed git tag. The draft rebuild steps are in [zunia-extension/docs/reproducible-builds.md](https://github.com/Zunia-Lab/zunia-extension/blob/main/docs/reproducible-builds.md). No external rebuild has passed them yet, so the Chrome Web Store build is **not** claimed reproducible. Store rewrapping means a bit-identical Chrome Web Store package is not a goal yet either.
 
 ## What is not claimed yet
 
