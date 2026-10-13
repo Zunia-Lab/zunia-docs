@@ -4,7 +4,7 @@ title: Errors
 
 # Errors
 
-Every transport rejects with `ZuniaConnectError` and a stable `code`. The provider uses the same codes on `window.zunia`.
+Every transport rejects with `ZuniaConnectError` and a stable `code`. `window.zunia` uses the wallet's codes from this list: `USER_REJECTED` to `INVALID_PARAMS`, and `INTERNAL`.
 
 | Code | Meaning |
 |------|---------|
@@ -24,6 +24,17 @@ Every transport rejects with `ZuniaConnectError` and a stable `code`. The provid
 | `INTERNAL` | Anything else. |
 
 `error instanceof ZuniaConnectError` and `error.code` are the stable checks. Do not match on `error.message`.
+
+`error.reason` narrows the cases where the next step differs:
+
+| Reason | Code | Meaning |
+|--------|------|---------|
+| `blind-signing` | `UNSUPPORTED` | This Zunia build cannot show the transaction, so it signed nothing. |
+| `amino-escaping` | `UNSUPPORTED` | Zunia 0.1.4 or older signed `&`, `<` or `>` in a way the chain refuses. Stopped before broadcast. |
+| `prompt-expired` | `TIMEOUT` | The extension's prompt expired before anyone answered. |
+| `stale-page` | `DISCONNECTED` | The extension was updated or reloaded under the page. Reload the page. |
+
+`explainZuniaError(error)` turns any error into a short `title`, a `message` with the next step, `retryable`, and the wallet's own text as `detail`.
 
 ## Sign-in (`ZuniaSignInError`)
 

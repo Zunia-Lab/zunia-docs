@@ -8,13 +8,13 @@ title: Events
 
 | Event | Audience | Data |
 |-------|----------|------|
-| `accountsChanged` | Origins that are connected | Read `getKey` again |
+| `accountsChanged` | Origins that are connected. Also sent when the wallet unlocks. | Read `getKey` again |
 | `chainChanged` | Origins that are connected | `{ chainIds }` still granted |
 | `disconnect` | Origins that lost access | `null` (all) or `{ chainIds }` |
 | `locked` | Connected origins | none |
 | `keplr_keystorechange` | Same as `accountsChanged` | none (Keplr alias) |
 
-Window events `zunia_*` and `keplr_*` are also dispatched for older listeners.
+For older listeners, `window` also gets `zunia_keystorechange`, `zunia_disconnect`, `zunia_locked` and `zunia_chainchanged`, plus `keplr_keystorechange` and `keplr_disconnect` while the Keplr alias is on.
 
 The worker only delivers these to tabs whose origin is granted. An origin that never connected hears nothing.
 
@@ -37,5 +37,5 @@ A visible Safari tab that uses the wallet also pings the worker every 3 seconds 
 | `chainChanged` | `string[]` |
 | `pairing` | `{ transport, uri, expiresAt }` |
 | `verification` | 6-digit string (QR only) |
-| `disconnect` | reason string |
+| `disconnect` | reason string, such as `"user"` (your own `disconnect()`), `"revoked"` (the extension dropped your site) or `"expired"` (the relay session ran out) |
 | `error` | `ZuniaConnectError` |

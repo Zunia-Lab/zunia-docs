@@ -14,12 +14,12 @@ The review screen shows:
 - Fee on the source chain
 - Memo, if you set one
 
-Sign on the device. The wallet broadcasts from the LCD you configured for that chain. Arrival time is whatever the relays take; Zunia does not run those.
+Sign on the device. The wallet broadcasts from the LCD you configured for that chain. Arrival time is whatever the IBC relayers take; Zunia does not run those.
 
-**Receive** shows the current account's address and QR for the selected network. Check the prefix (`cosmos`, `osmo`, …) before you give it out.
+**Deposit** (**Receive** in the mobile app) shows the current account's address and QR for the selected network. Check the prefix (`cosmos`, `osmo`, …) before you give it out.
 
 **Address book** (menu) stores labels so you do not paste a raw bech32 every time.
 
 **Swap** is a separate home action. It uses the same review + sign path. It needs the WASM kernel; if the kernel failed to load, Confirm stays disabled and the screen says why.
 
-Do not paste a seed phrase into any website, including a future `wallet.zunialab.com` dashboard. That surface is watch-only by design and is not deployed.
+Do not paste a seed phrase into any website, including the Zunia web dashboard at `app.zunialab.com`. It never asks for one: it holds no keys and sends every transaction to your wallet to sign.

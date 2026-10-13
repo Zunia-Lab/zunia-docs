@@ -6,11 +6,11 @@ title: FAQ
 
 ## Is Zunia in the stores?
 
-No. Chrome, Edge, Firefox, App Store and Play Store listings are not submitted. Load a build from GitHub. See [Install the extension](./use-wallet/extension.md) and [Install the mobile wallet](./use-wallet/mobile.md).
+The extension is on the [Chrome Web Store](https://chromewebstore.google.com/detail/zunia/ngokakoekdogobjmokipglbcclelgajk). Safari, the App Store and Google Play are in review. Firefox is planned. For the others, load a build from GitHub. See [Install the extension](./use-wallet/extension.md) and [Install the mobile wallet](./use-wallet/mobile.md).
 
 ## Can I use the same wallet on desktop and phone?
 
-Yes. Import the same recovery phrase on the second device. Each device holds its own encrypted copy. Zunia does not sync keys through a server.
+Yes. Import the same recovery phrase on the second device. Each device holds its own encrypted copy. Zunia does not sync keys through a server. The two apps add further accounts differently; see [More accounts](./use-wallet/keys.md#more-accounts).
 
 ## How does a website connect?
 
@@ -26,11 +26,11 @@ Expected. The app can open a WalletConnect session. It does not sign those reque
 
 ## Where is the relay?
 
-You run it. [zunia-backend](https://github.com/Zunia-Lab/zunia-backend) implements `zunia.connect.v2`. Nothing is deployed at `api.zunialab.com`.
+Zunia runs it at `https://api.zunialab.com`. Its source is [zunia-backend](https://github.com/Zunia-Lab/zunia-backend), which implements `zunia.connect.v2`. See [Connect a phone by QR](./integrate/qr.md).
 
 ## Are the SDKs on npm?
 
-Yes. `@zunialab/sdk-web`, `@zunialab/sdk-react`, `@zunialab/sdk-core` and `@zunialab/interchain` are on npm at 0.1.0.
+Yes. `@zunialab/sdk-web`, `@zunialab/sdk-react`, `@zunialab/sdk-core` and `@zunialab/interchain` are on npm.
 
 ## Which chains work?
 
@@ -42,7 +42,7 @@ No. You pay the network fee shown before you sign. Zunia takes no cut of transfe
 
 ## Is there a web dashboard I can paste my phrase into?
 
-No, and there must never be. The dashboard repo is a watch-only scaffold and is not deployed. Signing keys stay in the extension or the phone.
+No, and there must never be. The web dashboard at [app.zunialab.com](https://app.zunialab.com) holds no keys and never asks for a phrase. It connects the Zunia extension, Keplr, or Zunia mobile by QR code, and every transaction is signed in that wallet. Signing keys stay in the extension or the phone.
 
 ## Has Zunia been audited?
 

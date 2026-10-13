@@ -17,8 +17,11 @@ Version: 1
 Chain ID: <chain-id>
 Nonce: <hex>
 Issued At: <ISO-8601>
-Expiration Time: <ISO-8601>
-Not Before: <ISO-8601>   # optional
+Expiration Time: <ISO-8601>   # optional, always set by session.signIn()
+Not Before: <ISO-8601>        # optional
+Request ID: <text>            # optional
+Resources:                    # optional
+- <uri>
 ```
 
 | Field | Rule |
@@ -28,10 +31,10 @@ Not Before: <ISO-8601>   # optional
 | URI | Must be on that domain (`https://app.example.com/…` is fine; `https://evil.example` is not). |
 | Version | `1` |
 | Chain ID | The chain the account belongs to. |
-| Nonce | At least 8 bytes of entropy, typically `createNonce()`. Consume once on the server. |
-| Issued At | Not in the future. Default max age: 10 minutes. |
-| Expiration Time | Required in the SDK default (now + 10 minutes). Must be in the future at verify time. |
+| Nonce | 8 to 128 letters or digits. `createNonce()` gives 32 hex characters (128 random bits). Consume once on the server. |
+| Issued At | Not in the future (5 minutes of clock skew allowed). Default max age: 10 minutes (`maxAgeMs`). |
+| Expiration Time | Optional in the format. `session.signIn()` always sets it, by default 10 minutes after issue. Must be in the future at verify time. |
 
 `looksLikeSignIn` is what the wallet uses to decide between the sign-in screen and a generic arbitrary-data screen. `checkSignInBinding` is the domain/URI rule wallets must run before signing.
 
-Vectors: `@zunialab/sdk-core/test-vectors/sign-in-vectors.json`.
+Vectors: `test-vectors/sign-in-vectors.json` in the `@zunialab/sdk-core` package.

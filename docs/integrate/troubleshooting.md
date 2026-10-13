@@ -8,8 +8,8 @@ title: Troubleshooting
 
 The extension is not in this browser, or the content script is not allowed on your origin.
 
-- Load a production build (`pnpm build:chrome` then the unpacked `.output/chrome-mv3`), not only a stale `dist/`.
-- On Safari, enable Zunia under Settings, Apps, Safari, Extensions, and set **Other Websites** to Allow. The provider only appears on sites Safari allows.
+- Install Zunia from the [Chrome Web Store](https://chromewebstore.google.com/detail/zunia/ngokakoekdogobjmokipglbcclelgajk), or load a production build (`pnpm build:chrome`, then the unpacked `.output/chrome-mv3`).
+- On Safari, allow Zunia on the site. On iPhone and iPad: Settings, Apps, Safari, Extensions, Zunia, **Other Websites**: Allow. On a Mac: Safari Settings, Extensions, Zunia, **Always Allow on Every Website**, with Other Websites set to Allow. The provider only appears on sites Safari allows.
 - On Firefox, if the user withdrew host access in `about:addons`, the provider disappears.
 
 ## The connect window never appears (Firefox, Safari)
@@ -18,7 +18,7 @@ That is expected. Those browsers answer connect from the **toolbar icon**. On Sa
 
 ## `LOCKED`
 
-The wallet is locked. Ask the user to unlock. Do not open a second connect prompt. `restore` after a reload reports `locked` without a window.
+The wallet stayed locked: the user closed the unlock window, or nobody unlocked it in time. Do not open a second connect prompt. `restore` after a reload reports `locked` without a window. Offer a button that calls `session.unlock()` (`unlock` on `useZuniaSession`): it opens the unlock window and keeps your site's grant.
 
 ## `ORIGIN_MISMATCH` on sign-in
 
@@ -28,7 +28,7 @@ On QR pairing, the phone compares the message to the **verified origin**, not to
 
 ## Sign-in says "The wallet returned no signature"
 
-You are talking to an old extension build that wrapped `signArbitrary` in an extra object. Current builds return the bare `StdSignature`, which is what Keplr, cosmos-kit, graz and the SDK expect. Rebuild the extension.
+You are talking to an old extension build that wrapped `signArbitrary` in an extra object. Current builds return the bare `StdSignature`, which is what Keplr, cosmos-kit, graz and the SDK expect. Update or rebuild the extension.
 
 ## Events never arrive on Safari
 
@@ -36,8 +36,8 @@ Safari drops `tabs.sendMessage` from the worker. Current builds send events over
 
 ## QR pairing never completes
 
-- `apiBase` must be a relay you actually run. There is no public Zunia relay.
-- The phone refuses a QR whose relay is not on its trusted list. Debug builds accept localhost.
+- `apiBase` must be a relay the phone trusts: `https://api.zunialab.com`.
+- The phone refuses a QR whose relay is not on its trusted list. Debug builds also accept relays on the same machine or local network.
 - Compare the 6-digit codes. If they differ, throw the session away.
 - Unscanned rooms die after 10 minutes.
 
@@ -53,10 +53,19 @@ Public keys must be real `Uint8Array`s. The WalletConnect transport fetches them
 
 By design. Sign with `signAmino` / `signDirect` and broadcast from the dApp.
 
+## `UNSUPPORTED` on a contract call or a memo with `&`
+
+Check `error.reason`:
+
+- `blind-signing`: the extension could not decode the transaction, so it refused it without a prompt. Zunia 0.1.4 and older do this for a Direct contract call to a 32-byte contract. Hand CosmJS `session.getOfflineSignerFor(chainId, { messages, memo })` instead of `getOfflineSigner`, or ask the user to update Zunia.
+- `amino-escaping`: Zunia 0.1.4 or older signed `&`, `<` or `>` in a way the chain refuses. The SDK stopped it before broadcast. Ask the user to update Zunia, or remove those characters from the memo.
+
+`explainZuniaError(error)` gives a title and a next step for any error.
+
 ## Live balances stay off in Safari
 
-Safari never prompts for `https://*/*`. The user allows it under Settings, Apps, Safari, Extensions, Zunia, Other Websites, Allow. The wallet says so when the switch is flipped.
+Safari never prompts for `https://*/*`. On iPhone and iPad, the user allows it under Settings, Apps, Safari, Extensions, Zunia, Other Websites, Allow. On a Mac: Safari Settings, Extensions, Zunia, **Always Allow on Every Website**, with Other Websites set to Allow. The wallet says so when the switch is flipped.
 
 ## Packages 404 on npm
 
-`@zunialab/sdk-web`, `@zunialab/sdk-react`, `@zunialab/sdk-core` and `@zunialab/interchain` are public at 0.1.0. A 404 means the name or version does not match, or the install is using a registry other than `registry.npmjs.org`. See the [quickstart](../get-started/quickstart.md).
+`@zunialab/sdk-web`, `@zunialab/sdk-react`, `@zunialab/sdk-core` and `@zunialab/interchain` are public. A 404 means the name or version does not match, or the install is using a registry other than `registry.npmjs.org`. See the [quickstart](../get-started/quickstart.md).
