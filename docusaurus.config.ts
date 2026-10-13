@@ -1,6 +1,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import llmsPlugin, {type LlmsOptions} from './plugins/llms';
 
 const config: Config = {
   title: 'Zunia Docs',
@@ -41,6 +42,19 @@ const config: Config = {
     ],
   ],
   plugins: [
+    [
+      llmsPlugin,
+      {
+        summary:
+          'How to connect a dApp to Zunia, a self-custody multi-chain Cosmos wallet (browser extension, phone app and web dashboard), and how to use the wallet itself.',
+        details: [
+          'Every page below is also Markdown at the same address with `.md` added. All pages in one file: https://docs.zunialab.com/llms-full.txt. The same pages as JSON: https://docs.zunialab.com/docs-index.json.',
+          'The JavaScript SDKs are on npm: `@zunialab/sdk-web` (browser dApps), `@zunialab/sdk-react` (React hooks and components), `@zunialab/sdk-core` (server-side sign-in checks, shared types and errors) and `@zunialab/interchain` (IBC routes, denoms, packet-forward memos).',
+          'Coding assistants can search and read these docs through the Zunia MCP server at https://docs.zunialab.com/mcp (Streamable HTTP, no key). Setup: https://docs.zunialab.com/docs/get-started/ai.',
+        ],
+        optionalCategories: ['Brand', 'Legal (draft)', 'Architecture', 'Developers'],
+      } satisfies LlmsOptions,
+    ],
     [
       '@docusaurus/plugin-client-redirects',
       {
@@ -155,6 +169,8 @@ const config: Config = {
             {label: 'Quickstart', to: '/docs/get-started/quickstart'},
             {label: 'Provider API', to: '/docs/reference/provider'},
             {label: 'Connect v2', to: '/docs/reference/connect-v2'},
+            {label: 'Build with AI (MCP)', to: '/docs/get-started/ai'},
+            {label: 'llms.txt', href: 'https://docs.zunialab.com/llms.txt'},
           ],
         },
         {
