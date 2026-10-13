@@ -62,7 +62,7 @@ const config: Config = {
           {from: '/docs/getting-started/install-extension', to: '/docs/use-wallet/extension'},
           {from: '/docs/getting-started/install-mobile', to: '/docs/use-wallet/mobile'},
           {from: '/docs/wallet/keys-and-accounts', to: '/docs/use-wallet/keys'},
-          {from: '/docs/wallet/fees', to: '/docs/use-wallet/networks'},
+          {from: '/docs/wallet/fees', to: '/docs/use-wallet/fees'},
           {from: '/docs/wallet/custom-chains', to: '/docs/use-wallet/networks'},
           {from: '/docs/ibc/transfers', to: '/docs/use-wallet/send-and-ibc'},
           {from: '/docs/ibc/staking', to: '/docs/use-wallet/staking'},

@@ -50,6 +50,7 @@ const sidebars: SidebarsConfig = {
         'use-wallet/networks',
         'use-wallet/send-and-ibc',
         'use-wallet/staking',
+        'use-wallet/fees',
       ],
     },
     'faq',

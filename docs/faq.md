@@ -38,7 +38,9 @@ The bundled catalog is [zunia-chain-registry](https://github.com/Zunia-Lab/zunia
 
 ## Does Zunia charge fees?
 
-No. You pay the network fee shown before you sign. Zunia takes no cut of transfers or staking rewards.
+Only on swaps made with Zunia's own **Swap** screen, in the browser extension or on the [web dashboard](https://app.zunialab.com). Such a swap carries a 0.5% commission, sent to Zunia. It is taken in the same transaction from the token you sell, and the review screen shows it before you sign. If the funds start on another chain and the swap runs on Osmosis, the commission is taken on that chain when the transfer is sent. If the swap then fails on Osmosis, the amount swapped comes back but the commission does not.
+
+A swap you make on another site or dApp and only sign with Zunia carries no Zunia commission. Sends, IBC transfers and staking carry no commission either. You pay the network fee shown before you sign, and Zunia takes no cut of staking rewards. See [Fees](./use-wallet/fees.md).
 
 ## Is there a web dashboard I can paste my phrase into?
 

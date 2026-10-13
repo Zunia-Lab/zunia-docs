@@ -26,3 +26,5 @@ Turn it off and the wallet stops those requests.
 ## Fees
 
 Network fees go to validators, not to Zunia. Before you sign, the screen shows the fee denom, the amount and the gas. The network fee row on the Send and Swap screens opens the speed (**Low**, **Mid**, **High**) and the gas adjustment, and Zunia keeps your choice. Defaults come from the registry.
+
+A swap made with the **Swap** screen of the extension or of the [web dashboard](https://app.zunialab.com) also carries a 0.5% Zunia commission. See [Fees](./fees.md).
