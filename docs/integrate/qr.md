@@ -5,7 +5,7 @@ description: Pair a web page with Zunia mobile through zunia.connect.v2 and the 
 
 # Connect a phone by QR
 
-A page and Zunia mobile pair through `zunia.connect.v2`. The relay only forwards ciphertext. Both screens show the same 6-digit code so the user can see they are talking to each other.
+A page and Zunia mobile pair through `zunia.connect.v2`. The relay only forwards ciphertext. Both screens show the same 6-digit code so the user can see they are talking to each other. Zunia mobile calls this connection **Zunia Connect**, and lists its sessions under **Connected apps**.
 
 Zunia runs the relay at `https://api.zunialab.com`. Pass it as `apiBase`. Any site may open sessions there, within per-address rate limits. Its source is [zunia-backend](https://github.com/Zunia-Lab/zunia-backend).
 
@@ -84,6 +84,6 @@ While the phone is offline, the relay keeps up to 32 frames (1 MiB) for it, for 
 |------|---------|
 | Pairing, custom scheme | `zunia://connect?v=2&sid=…&t=…&pk=…&r=…`, plus `&ret=…` in the app link |
 | Pairing, Universal / App Link | `https://zunialab.com/connect?…` or `https://link.zunialab.com/connect?…` |
-| Wake a paired session | `zunia://connect/wake?sid=…` or `https://zunialab.com/connect/wake?sid=…` |
+| Wake a paired session | `zunia://connect/wake?sid=…`, `https://zunialab.com/connect/wake?sid=…` or `https://link.zunialab.com/connect/wake?sid=…` |
 
-Those HTTPS links do not open the app yet: the `apple-app-site-association` and `assetlinks.json` files on zunialab.com and link.zunialab.com still hold placeholders for the Apple team id and the Play signing certificate. Use the `zunia://` links.
+Those HTTPS links do not open the app yet. Zunia mobile declares them, but they also need an `apple-app-site-association` file and an `assetlinks.json` file on each host, and the ones in the zunialab.com site still hold placeholders for the Apple Team ID and the Play signing certificate fingerprint. Use the `zunia://` links.

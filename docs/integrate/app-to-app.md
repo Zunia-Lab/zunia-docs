@@ -41,9 +41,11 @@ Zunia follows `ret` only when the pairing link opened it on the same phone. A sc
 ## What the user sees
 
 - **Pairing:** Zunia's connect sheet with your app's name and icon, the chains you ask for, and a 6-digit code. Show the same code in your app (`verificationCode`) so the user can compare the two.
-- **Origin:** for a website, Zunia shows the origin the relay saw when the page created the session. A native app sends no web origin, so Zunia says it could not confirm which site this is. It still connects and signs, but it refuses [Sign in with Zunia](./sign-in.md) messages from such a session (`ORIGIN_MISMATCH`), because it cannot bind them to a domain.
-- **Requests:** each signature opens Zunia's review screen, the same as for a website.
-- **After answering:** Zunia opens your return target. If there is none, the user switches back themselves (on iPhone, the back link at the top left of the status bar).
+- **Origin:** for a website, Zunia shows the origin the relay saw when the page created the session (**Verified origin**). A native app sends no web origin, so Zunia shows **Origin not confirmed**. It still connects and signs, but it refuses [Sign in with Zunia](./sign-in.md) messages from such a session (`ORIGIN_MISMATCH`), because it cannot bind them to a domain.
+- **Requests:** each signature opens Zunia's review screen, the same as for a website. A request left unanswered for 5 minutes comes back as `USER_REJECTED` "Request expired before it was answered".
+- **After answering:** Zunia opens your return target once nothing else from your session waits. It does so only when your link brought it to the front: if the user was already in Zunia, or left it in between, Zunia shows "Done. You can go back to …" with a **Return** button instead. With no return target, the user switches back themselves (on iPhone, the back link at the top left of the status bar).
+- **Locked wallet:** a pairing link that arrives while Zunia is locked is handled after the user unlocks. A wake link reconnects the session at once, so the request is on screen right after unlocking.
+- **Connected apps:** the session is listed there with "Paired from: This phone" and where it returns to. The user can turn chains off for your session (you get `chains_changed`) or disconnect it.
 
 ## From a website on the phone
 

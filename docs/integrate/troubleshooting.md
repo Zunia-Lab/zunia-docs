@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: "Fixes for common integration problems: NOT_INSTALLED, a connect window that never appears, LOCKED, ORIGIN_MISMATCH on sign-in, QR pairing that never completes, a phone that does not show the request, too-large and queue-full errors, SESSION_EXPIRED, CosmJS signing and UNSUPPORTED."
+description: "Fixes for integration problems: NOT_INSTALLED, missing connect window, LOCKED, ORIGIN_MISMATCH, QR pairing and phone issues, too-large and queue-full, SESSION_EXPIRED, WalletConnect and window.keplr in Zunia mobile, CosmJS, UNSUPPORTED."
 ---
 
 # Troubleshooting
@@ -58,6 +58,14 @@ The phone has been offline while requests piled up: the relay holds at most 32 f
 ## `SESSION_EXPIRED`
 
 The relay forgot the room (restart without Postgres, or the 24-hour TTL). Call `connect` again.
+
+## WalletConnect never reaches Zunia mobile
+
+Zunia mobile answers WalletConnect only in builds made with a WalletConnect project id. Other builds tell the user "This build of Zunia does not have WalletConnect turned on", and your request ends in `TIMEOUT`. Offer QR pairing, which every build supports. See [WalletConnect](./walletconnect.md#zunia-mobile-as-a-walletconnect-wallet).
+
+## Your site does not find a wallet in Zunia mobile's browser
+
+Zunia mobile's in-app browser injects `window.zunia` only. `window.keplr` appears only when the user turns on **Keplr compatibility** (**Settings** → **Connected sites**), and there is no `keplr#initialized` event or global `window.getOfflineSigner`. Look for `window.zunia` (or use `getZunia()`), and wait for `zunia#initialized`. See [`window.zunia` in Zunia mobile](../reference/provider.md#zunia-mobile).
 
 ## CosmJS cannot sign
 

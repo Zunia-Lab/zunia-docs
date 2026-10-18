@@ -23,7 +23,7 @@ Yes. [Sign in with Zunia](./integrate/sign-in.md) is an ADR-036 message bound to
 
 ## I scanned a WalletConnect code with Zunia mobile and nothing signs.
 
-Zunia mobile 0.1.0 signs WalletConnect requests only in builds that include a WalletConnect project id; in other builds WalletConnect is off (**Settings & security** shows it). Use the Zunia QR code (Connect with Zunia) instead: it needs no project id and shows the site's verified origin.
+Zunia mobile 0.1.0 signs WalletConnect requests only in builds that include a WalletConnect project id. Other builds say "This build of Zunia does not have WalletConnect turned on" when you scan a WalletConnect code. Use the site's Zunia QR code (**Connect with Zunia**) instead: Zunia Connect needs no project id and shows the site's verified origin.
 
 ## Where is the relay?
 

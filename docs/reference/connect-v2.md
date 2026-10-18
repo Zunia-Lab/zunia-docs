@@ -128,6 +128,19 @@ The SDK opens it after sending a signing request on a session that was paired fr
 | Frame rate | 120 frames per 10 seconds per socket, then `4008`. |
 | Creation | 20 new sessions and 60 WebSocket upgrades per client address per minute; 10,000 live sessions in all (`503` beyond). |
 
+## What Zunia mobile does
+
+Zunia mobile 0.1.0 is the wallet end of every session. What a dApp can count on:
+
+- **Accounts.** `connect_approve` carries the active account's address on each approved chain, whichever account that is, with `algo` `secp256k1`, or `eth_secp256k1` on chains with Ethereum-style addresses (Ethermint, Injective). When the user switches accounts, the dApp gets `accounts_changed`.
+- **Chains.** The user can turn chains off and on again per session under **Connected apps**, among those the dApp asked for, and must keep at least one. Each change sends `chains_changed` with the chains left, then `accounts_changed` when a chain came back. A request for a chain the session just lost is answered with `UNKNOWN_CHAIN`.
+- **Expiry.** A request nobody answers within 5 minutes is answered with `error` `{ code: "USER_REJECTED", message: "Request expired before it was answered" }`, the extension's wording for an expired prompt.
+- **Size.** An answer that would not fit in a 512 KiB frame is replaced by `INVALID_PARAMS` ("The answer is larger than the relay accepts") before it is queued; for a connect approval, by `connect_reject` with that error.
+- **Offline dApp.** When the relay answers `QUEUE_FULL`, the wallet keeps that answer and everything after it, and sends them when the dApp is back online. The user is told to keep the site's page open.
+- **Sign-in** is bound to `verifiedOrigin`. A session without one (a native app, which sends no web origin) is refused sign-in with `ORIGIN_MISMATCH`, and the connect sheet says the origin is not confirmed.
+- **Return and wake.** Zunia opens `ret` only after the user answered, only when a pairing or wake link brought it to the front on this phone, and only once nothing else from that session waits. When Zunia was already open, it shows "Done. You can go back to …" with a **Return** button instead. Going to the background cancels the pending return. A link that arrives while Zunia is locked runs after unlock; a wake link reconnects the session at once, so the request is waiting there.
+- **Relays.** It pairs only through relays on its trusted list (`wss://api.zunialab.com` by default) and refuses any other `r`.
+
 ## What the relay sees
 
 The session id, hashed tokens, `verifiedOrigin`, each side's role and presence, timestamps, frame sizes and timing, and the wallet's X25519 public key, which `hello` carries in the clear. It never sees the dApp's public key (it is only in the pairing link), the shared secret, the session keys, accounts, sign-in messages or transactions. Knowing one public key does not let the relay read anything; swapping keys would change the 6-digit code on both screens.

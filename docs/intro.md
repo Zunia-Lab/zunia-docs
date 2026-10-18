@@ -12,13 +12,13 @@ There are two products you can install, and three ways a site can reach a wallet
 | Product | What it is | Status |
 |---------|------------|--------|
 | [Browser extension](https://github.com/Zunia-Lab/zunia-extension) | Chrome, Edge, Firefox and Safari (macOS and iOS) | On the [Chrome Web Store](https://chromewebstore.google.com/detail/zunia/ngokakoekdogobjmokipglbcclelgajk). Safari on Mac is on the [Mac App Store](https://apps.apple.com/app/zunia/id6816604128?mt=12) and requires macOS 13. Safari on iOS is in review. Firefox is planned. Edge builds are not published. |
-| [Mobile wallet](https://github.com/Zunia-Lab/zunia-mobile) | iOS and Android | Version 0.1.0. Not on the App Store or Google Play yet: [build it](./use-wallet/mobile.md#build-it-yourself). Signs WalletConnect requests in builds that include a WalletConnect project id. |
+| [Mobile wallet](https://github.com/Zunia-Lab/zunia-mobile) | iOS 13+ and Android 7.0+ | Version 0.1.0, same signing kernel as extension 0.1.5. Not on the App Store or Google Play yet: [build it](./use-wallet/mobile.md#build-it-yourself). Signs WalletConnect requests in builds that include a WalletConnect project id. |
 
 The [web dashboard](https://app.zunialab.com) is not something you install, and it holds no keys. It connects the Zunia extension, Keplr, or Zunia mobile by QR code, and every transaction it prepares is signed in that wallet.
 
 A website talks to those products through the [JavaScript SDKs](./get-started/quickstart.md):
 
-1. **Extension.** The wallet injects `window.zunia`. This is the path to use in a desktop browser when Zunia is installed.
+1. **Extension.** The wallet injects `window.zunia`. This is the path to use in a desktop browser when Zunia is installed. Zunia mobile's in-app browser injects the same `window.zunia`, so a site opened there connects the same way.
 2. **Phone, by QR code.** The site shows a code, Zunia mobile scans it, and both sides talk through a relay. Messages are encrypted end to end. Zunia runs the relay at `https://api.zunialab.com`, the one Zunia mobile trusts. Its source is [zunia-backend](https://github.com/Zunia-Lab/zunia-backend). On the phone itself, a page or another app opens Zunia with a link instead, and Zunia comes back to it: see [Use Zunia mobile from another app](./integrate/app-to-app.md).
 3. **WalletConnect v2.** For other wallets. Zunia mobile answers it only in builds with a WalletConnect project id; to reach Zunia mobile, prefer the QR code.
 
@@ -46,7 +46,7 @@ sequenceDiagram
 - Sign Amino and Direct transactions and broadcast them yourself (CosmJS or your own client).
 - Pair Zunia mobile with a site by QR code, through the Zunia relay, or, on the phone itself, with a link that brings the user back to the site or app.
 - Connect a Flutter app to Zunia mobile by QR code or on the same phone with [`zunia_sdk`](./integrate/flutter.md) from pub.dev.
-- Send, swap, stake and vote from the extension itself, using the WebAssembly kernel.
+- Send, swap, stake and vote from the extension itself, using the WebAssembly kernel, or from Zunia mobile, using the same kernel built for the phone.
 - Use the web dashboard at [app.zunialab.com](https://app.zunialab.com) with the extension, Keplr or Zunia mobile.
 
 ## What is not ready

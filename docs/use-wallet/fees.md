@@ -34,7 +34,7 @@ When the funds sit on another chain, they are transferred to Osmosis and swapped
 
 If the swap then fails on Osmosis, the amount swapped comes back. The commission does not.
 
-Some pairs cannot be swapped in one step from another chain. The **Swap** screen then asks you to move the tokens to Osmosis first: with Send in the extension, with Bridge on the web dashboard. That transfer carries no commission. The swap that follows starts on Osmosis, and its commission is taken there, in the same transaction.
+Some pairs cannot be swapped in one step from another chain. The **Swap** screen then asks you to move the tokens to Osmosis first: with Send in the extension, with **Move to Osmosis** (which opens Send) in the mobile app, with Bridge on the web dashboard. That transfer carries no commission. The swap that follows starts on Osmosis, and its commission is taken there, in the same transaction.
 
 ## No commission
 

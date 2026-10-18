@@ -1,10 +1,11 @@
 ---
 title: Web dApp (extension)
+description: "Connect a web dApp to the Zunia extension, or to Zunia mobile's in-app browser, with @zunialab/sdk-web: restore without a prompt, detect the provider, which calls open a window, sign with CosmJS and broadcast."
 ---
 
 # Connect from a web dApp
 
-Use `@zunialab/sdk-web` when you are not on React, or when you want the session object yourself. The extension injects `window.zunia` on `https://` pages and on localhost.
+Use `@zunialab/sdk-web` when you are not on React, or when you want the session object yourself. The extension injects `window.zunia` on `https://` pages and on localhost. So does Zunia mobile's in-app browser (**Discover**), with `mode: "mobile"`: the code on this page works there unchanged. See [`window.zunia` in Zunia mobile](../reference/provider.md#zunia-mobile).
 
 ```ts
 import { createZuniaSession } from "@zunialab/sdk-web";

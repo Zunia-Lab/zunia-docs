@@ -11,8 +11,9 @@ Use when submitting iOS / macOS builds. **Confirm with counsel**; this is an eng
 - [ ] App uses encryption for HTTPS / TLS to backends and RPCs
 - [ ] App uses standard OS crypto (Keychain / Secure Enclave / Keystore) for key material at rest
 - [ ] App implements wallet cryptography (signing) using approved algorithms (e.g. secp256k1) in `zunia-core`
+- [ ] App seals recovery phrases at rest with the password through `zunia-core` (Argon2id key derivation, XChaCha20-Poly1305), then stores them in the Keychain / Keystore-backed storage
 - [ ] App implements the documented `zunia.connect.v2` pairing crypto (X25519, HKDF-SHA256, ChaCha20-Poly1305) so QR sessions are end-to-end encrypted
-- [ ] App does **not** implement undocumented proprietary encryption beyond TLS, OS key stores, wallet signing and that pairing protocol
+- [ ] App does **not** implement undocumented proprietary encryption beyond TLS, OS key stores, wallet signing, the phrase sealing above and that pairing protocol
 - [ ] Export compliance / EAR questions answered consistently with Apple's "encryption" questionnaire
 - [ ] If only exempt encryption (HTTPS + OS crypto), document whether annual self-classification / EAR exemption applies in your jurisdiction
 - [ ] Privacy nutrition labels match [Privacy Policy draft](./privacy.md)
