@@ -183,15 +183,8 @@ Two failures are refused before they reach the phone:
 | `INVALID_PARAMS` | `too-large` | The sealed request is over the relay's 512 KiB frame limit. Nothing was sent. |
 | `NETWORK` | `queue-full` | Zunia is offline and the relay already holds 32 frames (or 1 MiB) for it. The request fails at once instead of timing out. |
 
-## The Zunia wallet (the mobile app)
+## The wallet side
 
-[zunia-mobile](https://github.com/Zunia-Lab/zunia-mobile) is the wallet, and it speaks `zunia.connect.v2`. When a pairing arrives, it:
+The other end of every session is Zunia mobile ([zunia-mobile](https://github.com/Zunia-Lab/zunia-mobile)). It shows the 6-digit code and the verified origin, binds sign-in to that origin, and resumes the session after a reconnect. For its status and how to build it, see [Install the mobile wallet](../use-wallet/mobile.md).
 
-- reads the pairing URI and agrees on keys;
-- shows the 6-digit code and the verified origin;
-- binds sign-in to that origin;
-- resumes the session with `resumeToken`.
-
-It accepts WalletConnect sessions when a Cloud project id is set. It does not sign WalletConnect requests yet.
-
-The app is in App Store and Google Play review. To build it yourself, see [Install the mobile wallet](../use-wallet/mobile.md). It needs zunia-core and zunia-ui checked out next to it. Use the same recovery phrase as the extension if you want both devices.
+Return links (`ret`) and wake links need a Zunia mobile build that handles them, 0.1.0 or later. An older build pairs and signs the same way but leaves the person in Zunia.
