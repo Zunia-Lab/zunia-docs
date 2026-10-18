@@ -123,7 +123,7 @@ zunia://pay?chain=osmosis-1&to=osmo1…&denom=uosmo&amount=1500000&memo=Invoice%
 
 Only `to` is required. `amount` is in base units of `denom`, the memo is at most 256 characters, and every value is percent-encoded. With nothing but an address, the code is the plain address, which any wallet reads.
 
-Scanned or pasted in Zunia, a payment request opens **Send** with every field filled in for you to check. Nothing is signed from a scan alone. Opening a `zunia://pay` link from another app does nothing in 0.1.0.
+Scanned, pasted, or opened as a `zunia://pay` link from another app, a payment request opens **Send** with every field filled in for you to check. Nothing is signed until you review and approve it. A request with a malformed field is refused with the reason.
 
 ## Codes and links
 
@@ -137,6 +137,7 @@ These links open Zunia:
 | `zunia://connect/wake?sid=…` | Bring a paired session up and show what it sent |
 | `wc:…`, `zunia://wc?uri=…`, `zuniamobile://wc?uri=…` | Pair over WalletConnect |
 | `zunia://dapp?url=https://…` | Open a site in Discover, after you confirm the address |
+| `zunia://pay?to=…&chain=…&denom=…&amount=…&memo=…` | Open Send filled in, for you to review |
 | `https://zunialab.com/connect`, `/connect/wake`, `/wc` (also on `link.zunialab.com`) | The same, as Universal Links and App Links |
 
 The `https://` forms do not open the app yet. They need an `apple-app-site-association` file with Zunia's Apple Team ID and an `assetlinks.json` file with its Play signing fingerprint on each host, and the ones in the zunialab.com site still hold placeholders. Use the `zunia://` links.

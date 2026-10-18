@@ -31,7 +31,7 @@ The fee comes from a simulation of the transaction, at the speed you pick (**Low
 zunia://pay?chain=<chain id>&to=<address>&denom=<denom>&amount=<base units>&memo=<text>
 ```
 
-Only `to` is required, and `amount` is in base units of `denom`. Scanned or pasted in Zunia (**Pair a device**, or the scan button on **Wallet**), it opens Send with every field filled in for you to check. Opened as a link from another app, it does nothing in 0.1.0. A plain address, a `cosmos:<address>` URI or `{"address": "…"}` JSON scans too.
+Only `to` is required, and `amount` is in base units of `denom`. Scanned or pasted in Zunia (**Pair a device**, or the scan button on **Wallet**), or opened as a link from another app, it opens Send with every field filled in for you to check. Nothing is signed until you approve the review. A plain address, a `cosmos:<address>` URI or `{"address": "…"}` JSON scans too.
 
 **Deposit** (**Receive** in the mobile app) shows the current account's address and QR for the selected network. Check the prefix (`cosmos`, `osmo`, …) before you give it out.
 
