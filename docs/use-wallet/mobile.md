@@ -20,12 +20,12 @@ Zunia mobile 0.1.0 is not on the App Store or Google Play yet. Until it is, [bui
 
 ## Find your way
 
-The tab bar has **Wallet**, **Swap**, **Earn**, **Discover** and **Activity**. **Wallet** has **Send**, **Receive**, **Swap** and **Stake**. Its header switches accounts, scans a code, hides amounts, and opens the menu.
+The tab bar has **Wallet**, **Swap**, **Browser**, **Earn** and **Gov** (governance). **Wallet** has **Send**, **Receive**, **Swap** and **Stake**, and an eye beside the total that hides amounts. The header on every tab switches accounts and opens **Activity**, **Notifications** (with the live unread count), the scanner and the menu.
 
-The menu slides in from the right:
+The menu slides in from the right and lists only what the tab bar does not:
 
-- **Ecosystem** (the Discover tab), **Manage networks**, **Bridge**, **Collectibles**, **Governance**, **Activity**, **Rewards**, **Missions**.
-- **Pair a device**, **Connected apps**, **Address book**, **Notifications**, **Settings & security**, **Help**.
+- **Activity**, **Manage networks**, **Bridge**, **Collectibles**, **Missions** (coming soon).
+- **Pair a device**, **Connected apps**, **Address book**, **Settings & security**, **Help**.
 - The theme: **Dark**, **Light** or **Auto**. Auto follows the phone, and is the default.
 
 ## What it does
@@ -91,7 +91,7 @@ Another app can use Zunia as its wallet the same way: it opens Zunia with a link
 
 ## The in-app browser
 
-**Discover** opens sites inside Zunia: a list of dApps, your bookmarks and recent sites, or any address you type. There a site sees Zunia as `window.zunia`, as it would see the extension on a computer. It asks to connect for the chains it names, and every signature opens a review.
+**Browser** opens sites inside Zunia: a list of dApps, your bookmarks and recent sites, or any address you type. There a site finds Zunia as `window.zunia`, and as `window.keplr` for sites built for Keplr, exactly as it would find a wallet extension on a computer. It asks to connect for the chains it names, and every signature opens a review.
 
 - Only `https://` pages get the wallet (and `http://localhost` for developers).
 - Each site is approved per network, and each approval lasts 7 days.
@@ -101,9 +101,9 @@ Another app can use Zunia as its wallet the same way: it opens Zunia with a link
 **Settings** → **Connected sites** lists each site with its networks and the address it saw. Disconnect a site, one of its networks, or every site there. It also holds two switches, both off by default:
 
 - **Blind signing**: approve messages Zunia cannot decode. Off, such a request is refused before any review opens.
-- **Keplr compatibility**: also answer as `window.keplr`, for sites that only look for Keplr.
+- **Keplr compatibility** (on by default in the app): also answer as `window.keplr`, with Keplr's `getOfflineSigner` helpers, for sites that only look for Keplr. Inside Zunia's own browser no other wallet competes for that name.
 
-A `zunia://dapp?url=https://…` link opens a site in Discover after you confirm its address. Developers: see [`window.zunia`](../reference/provider.md#zunia-mobile).
+A `zunia://dapp?url=https://…` link opens a site in Browser after you confirm its address. Developers: see [`window.zunia`](../reference/provider.md#zunia-mobile).
 
 ## What the review shows
 
@@ -136,7 +136,7 @@ These links open Zunia:
 | `zunia://connect?v=2&…` | Pair with a site or app (Zunia Connect) |
 | `zunia://connect/wake?sid=…` | Bring a paired session up and show what it sent |
 | `wc:…`, `zunia://wc?uri=…`, `zuniamobile://wc?uri=…` | Pair over WalletConnect |
-| `zunia://dapp?url=https://…` | Open a site in Discover, after you confirm the address |
+| `zunia://dapp?url=https://…` | Open a site in Browser, after you confirm the address |
 | `zunia://pay?to=…&chain=…&denom=…&amount=…&memo=…` | Open Send filled in, for you to review |
 | `https://zunialab.com/connect`, `/connect/wake`, `/wc` (also on `link.zunialab.com`) | The same, as Universal Links and App Links |
 
@@ -150,7 +150,7 @@ Zunia notifies you of approvals waiting, tokens arriving, staking rewards to cla
 
 They are local notifications, raised by the app itself while it runs and the wallet is unlocked. Nothing is sent to a server for them, there is no push, and nothing arrives once the system has suspended Zunia. The feed catches up when you come back.
 
-Zunia never asks for permission at launch. It asks when you turn **Device notifications** on (**Settings** → **Notifications**), or offers to after a stake or a claim. On iPhone they start as quiet deliveries to Notification Center, with no prompt, until you allow banners.
+Zunia never asks for permission at launch. A moment after the wallet first opens, it offers once to notify you in real time; **Turn on** asks the system for banners. You can also turn **Device notifications** on later (**Settings** → **Notifications**). On Android they appear as heads-up banners.
 
 ## Same phrase, two devices
 

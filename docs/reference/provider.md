@@ -1,11 +1,11 @@
 ---
 title: window.zunia
-description: "window.zunia in the Zunia extension and in Zunia mobile's in-app browser (mode \"mobile\"): methods, identity fields, features, errors, fee changes in signed, the opt-in window.keplr, and changes from pre-release mobile builds."
+description: "window.zunia in the Zunia extension and in Zunia mobile's in-app browser (mode \"mobile\"): methods, identity fields, features, errors, fee changes in signed, window.keplr (opt-in in the extension, on by default in the app), and changes from pre-release mobile builds."
 ---
 
 # `window.zunia`
 
-The extension injects this object on `https://` pages and localhost. Zunia mobile injects the same object in its in-app browser; see [Zunia mobile](#zunia-mobile). Types live in `@zunialab/sdk-core` as `ZuniaProvider`. An optional `window.keplr` alias exists when the user enables it.
+The extension injects this object on `https://` pages and localhost. Zunia mobile injects the same object in its in-app browser; see [Zunia mobile](#zunia-mobile). Types live in `@zunialab/sdk-core` as `ZuniaProvider`. A `window.keplr` alias is optional in the extension (off by default) and on by default in Zunia mobile's browser.
 
 The provider dispatches `zunia#initialized` on `window`, and `zunia_keystorechange` on account changes (`keplr_keystorechange` too while the Keplr alias is on).
 
@@ -58,7 +58,7 @@ Rejected calls use `ZuniaProviderError` with a stable `code`: `USER_REJECTED`, `
 
 ## Zunia mobile
 
-Zunia mobile 0.1.0 injects `window.zunia` into pages opened in **Discover**, its in-app browser: top-level `https://` pages and `http://localhost` only, never frames. Every call carries a per-browser token that a framed page cannot read, and keys never enter the WebView. It dispatches `zunia#initialized` like the extension, so `getZunia()` and the SDK's extension transport work unchanged.
+Zunia mobile 0.1.0 injects `window.zunia` into pages opened in **Browser**, its in-app browser: top-level `https://` pages and `http://localhost` only, never frames. Every call carries a per-browser token that a framed page cannot read, and keys never enter the WebView. It dispatches `zunia#initialized` like the extension, so `getZunia()` and the SDK's extension transport work unchanged.
 
 | Field | Value |
 |-------|-------|
@@ -79,7 +79,7 @@ It has the methods above, plus `getAccounts(chainId)`, and behaves as the extens
 - **`experimentalSuggestChain`** opens an **Add network** review; once approved, the chain is saved and usable.
 - **`verifyArbitrary`** checks the ADR-036 signature in the app.
 - **`sendTx`** rejects with `UNSUPPORTED`.
-- **`window.keplr`** exists only while the user has **Keplr compatibility** on (**Settings** → **Connected sites**, off by default). It is the same object, with `isZunia: true`.
+- **`window.keplr`** is on by default (**Settings** → **Connected sites** → **Keplr compatibility** turns it off). It is the same object, with `isZunia: true`, alongside Keplr's globals `window.getOfflineSigner`, `window.getOfflineSignerOnlyAmino` and `window.getOfflineSignerAuto`, and a `keplr#initialized` event, so a site written for Keplr finds Zunia without changes.
 - **User agent**: the system WebView's own (Safari's on iPhone, Chrome's on Android) followed by ` Zunia/0.1.0 Mobile`.
 
 Events are those of the [extension](./events.md), sent only to the open page while it is connected.
@@ -88,8 +88,7 @@ Events are those of the [extension](./events.md), sent only to the open page whi
 
 Sites tested against Zunia mobile builds from before 0.1.0 should check:
 
-- `window.keplr` is no longer there by default. It needs **Keplr compatibility** on.
-- `keplr#initialized` and the global `window.getOfflineSigner` are gone. Wait for `zunia#initialized`, and call `window.zunia.getOfflineSigner(chainId)`.
+- `window.keplr`, the global `window.getOfflineSigner` helpers and `keplr#initialized` exist only while **Keplr compatibility** is on (the default). New code should wait for `zunia#initialized` and call `window.zunia.getOfflineSigner(chainId)`.
 - The user agent no longer pretends to be iOS Safari and no longer contains `ZuniaWallet/0.1`. Look for `Zunia/` and `Mobile`, or better, for `window.zunia.mode === "mobile"`.
 - Messages the kernel cannot decode are refused unless blind signing is on.
 - A fee tier the user picked rewrites the fee: broadcast what comes back in `signed`.

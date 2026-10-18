@@ -65,7 +65,7 @@ Zunia mobile answers WalletConnect only in builds made with a WalletConnect proj
 
 ## Your site does not find a wallet in Zunia mobile's browser
 
-Zunia mobile's in-app browser injects `window.zunia` only. `window.keplr` appears only when the user turns on **Keplr compatibility** (**Settings** → **Connected sites**), and there is no `keplr#initialized` event or global `window.getOfflineSigner`. Look for `window.zunia` (or use `getZunia()`), and wait for `zunia#initialized`. See [`window.zunia` in Zunia mobile](../reference/provider.md#zunia-mobile).
+Zunia mobile's in-app browser injects `window.zunia`, and by default also `window.keplr`, Keplr's `getOfflineSigner` globals and a `keplr#initialized` event. A user can turn the Keplr names off (**Settings** → **Connected sites** → **Keplr compatibility**); a site that still finds nothing should look for `window.zunia` (or use `getZunia()`) and wait for `zunia#initialized`. See [`window.zunia` in Zunia mobile](../reference/provider.md#zunia-mobile).
 
 ## CosmJS cannot sign
 
