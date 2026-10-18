@@ -102,4 +102,5 @@ await client.signAndBroadcast(account.address, messages, "auto", memo);
 - [React guide](../integrate/react.md)
 - [Extension without React](../integrate/extension.md)
 - [Pair a phone by QR](../integrate/qr.md)
+- [Use Zunia mobile from another app](../integrate/app-to-app.md), on the same phone
 - [Events and session lifecycle](../integrate/events.md)

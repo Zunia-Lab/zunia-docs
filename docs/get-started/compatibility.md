@@ -1,10 +1,11 @@
 ---
 title: Compatibility
+description: "Status of each surface: the extension per browser and its listings, Zunia mobile 0.1.0 (not in stores; Zunia Connect, in-app browser, WalletConnect, app links), the SDK packages, the relay, signing modes and chains."
 ---
 
 # Compatibility and status
 
-Honest status for each surface. The extension is on the Chrome Web Store. Safari, the App Store and Google Play are in review. The JavaScript packages are on npm.
+Honest status for each surface. The extension is on the Chrome Web Store, and Safari on Mac is on the Mac App Store; Safari on iPhone and iPad is in review. Zunia mobile 0.1.0 is not on the App Store or Google Play yet. The JavaScript packages are on npm.
 
 ## Browsers
 
@@ -27,11 +28,14 @@ macOS Safari has not been run end to end. It needs **Allow unsigned extensions**
 | --- | --- | --- |
 | App | Flutter, iOS 13+ in the current project | Flutter, Android 7.0+ (API 24) in the current project |
 | QR pairing (`zunia.connect.v2`) | Implemented | Implemented |
-| WalletConnect session | Accepted when a Cloud project id is set | Same |
-| WalletConnect signing | Not implemented | Not implemented |
-| Store | In App Store review | In Google Play review |
+| Same-device pairing with a return target (`ret`), wake links | Implemented in 0.1.0 | Implemented in 0.1.0 |
+| In-app browser `window.zunia` (`mode: "mobile"`) | Implemented in 0.1.0 | Implemented in 0.1.0 |
+| WalletConnect v2 (sessions and signing) | In builds with a WalletConnect project id | Same |
+| `https://zunialab.com/connect` links (Universal Links / App Links) | Declared; need the `apple-app-site-association` file with the Team ID | Declared; need `assetlinks.json` with the Play signing fingerprint |
+| Notifications | Local, while the app runs; no push | Same |
+| Store | Not on the App Store yet | Not on Google Play yet |
 
-Pair Zunia mobile with a site by QR, not by WalletConnect, until signing exists.
+Pair Zunia mobile with a site by QR: it needs no WalletConnect project id, and the phone shows the origin the relay verified. On the phone itself, see [Use Zunia mobile from another app](../integrate/app-to-app.md).
 
 ## SDKs
 
@@ -51,10 +55,10 @@ To test against a relay of your own, `pnpm dev` in zunia-backend listens on `htt
 
 ## Signing
 
-- Cosmos Amino and Direct: supported in the extension and over QR pairing.
-- Zunia extension 0.1.4 and older refuse, in Direct mode, a contract call to a 32-byte contract or a send to a 32-byte address. They also sign Amino documents holding `&`, `<` or `>` over bytes the chain rejects. 0.1.5 fixes both and reports `extensionVersion` and `features` on `window.zunia`. `session.getOfflineSignerFor()` picks the mode each build can sign.
+- Cosmos Amino and Direct: supported in the extension, in Zunia mobile's in-app browser, over QR pairing and over WalletConnect.
+- Zunia extension 0.1.4 and older refuse, in Direct mode, a contract call to a 32-byte contract or a send to a 32-byte address. They also sign Amino documents holding `&`, `<` or `>` over bytes the chain rejects. 0.1.5 fixes both and reports `extensionVersion` and `features` on `window.zunia`. Zunia mobile 0.1.0 signs with the same kernel and reports the same `features`. `session.getOfflineSignerFor()` picks the mode each build can sign.
 - Sign in with Zunia: ADR-036 message bound to the site. Supported.
-- `sendTx` on `window.zunia`: not supported. The dApp broadcasts.
+- `sendTx` on `window.zunia`: not supported, in the extension or in Zunia mobile. The dApp broadcasts.
 - Ethermint / coin type 60: the wallet derives those addresses. It does not expose an Ethereum provider (`eth_*`, EIP-712). Do not treat it as MetaMask.
 - Hardware wallets: not supported.
 

@@ -1,5 +1,6 @@
 ---
 title: Troubleshooting
+description: "Fixes for integration problems: NOT_INSTALLED, missing connect window, LOCKED, ORIGIN_MISMATCH, QR pairing and phone issues, too-large and queue-full, SESSION_EXPIRED, WalletConnect and window.keplr in Zunia mobile, CosmJS, UNSUPPORTED."
 ---
 
 # Troubleshooting
@@ -40,10 +41,31 @@ Safari drops `tabs.sendMessage` from the worker. Current builds send events over
 - The phone refuses a QR whose relay is not on its trusted list. Debug builds also accept relays on the same machine or local network.
 - Compare the 6-digit codes. If they differ, throw the session away.
 - Unscanned rooms die after 10 minutes.
+- On the phone itself, the user taps **Open the Zunia app** rather than scanning. If nothing opens, Zunia is not installed, or the browser wants a fresh tap: keep a button that calls `session.openWallet()`.
+
+## The phone does not show the request
+
+Over QR pairing, the relay keeps a request for up to 10 minutes while Zunia is offline, and hands it over when Zunia reconnects. When the user paired from the same phone, the SDK opens Zunia for each signing request (sdk-web 0.2.0 and later). On a computer, ask the user to open Zunia on their phone. See [Use Zunia mobile from another app](./app-to-app.md).
+
+## `INVALID_PARAMS` with `reason: "too-large"`
+
+The request is over the relay's 512 KiB frame limit once encrypted, so the SDK did not send it. Split the transaction, or move large data out of the memo or the message.
+
+## `NETWORK` with `reason: "queue-full"`
+
+The phone has been offline while requests piled up: the relay holds at most 32 frames (1 MiB) for it, for 10 minutes. Ask the user to open Zunia, then try again.
 
 ## `SESSION_EXPIRED`
 
 The relay forgot the room (restart without Postgres, or the 24-hour TTL). Call `connect` again.
+
+## WalletConnect never reaches Zunia mobile
+
+Zunia mobile answers WalletConnect only in builds made with a WalletConnect project id. Other builds tell the user "This build of Zunia does not have WalletConnect turned on", and your request ends in `TIMEOUT`. Offer QR pairing, which every build supports. See [WalletConnect](./walletconnect.md#zunia-mobile-as-a-walletconnect-wallet).
+
+## Your site does not find a wallet in Zunia mobile's browser
+
+Zunia mobile's in-app browser injects `window.zunia`, and by default also `window.keplr`, Keplr's `getOfflineSigner` globals and a `keplr#initialized` event. A user can turn the Keplr names off (**Settings** → **Connected sites** → **Keplr compatibility**); a site that still finds nothing should look for `window.zunia` (or use `getZunia()`) and wait for `zunia#initialized`. See [`window.zunia` in Zunia mobile](../reference/provider.md#zunia-mobile).
 
 ## CosmJS cannot sign
 
