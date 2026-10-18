@@ -11,7 +11,7 @@ There are two products you can install, and three ways a site can reach a wallet
 
 | Product | What it is | Status |
 |---------|------------|--------|
-| [Browser extension](https://github.com/Zunia-Lab/zunia-extension) | Chrome, Edge, Firefox and Safari (macOS and iOS) | On the [Chrome Web Store](https://chromewebstore.google.com/detail/zunia/ngokakoekdogobjmokipglbcclelgajk). Safari is in App Store review. Firefox is planned. Edge builds are not published. |
+| [Browser extension](https://github.com/Zunia-Lab/zunia-extension) | Chrome, Edge, Firefox and Safari (macOS and iOS) | On the [Chrome Web Store](https://chromewebstore.google.com/detail/zunia/ngokakoekdogobjmokipglbcclelgajk). Safari on Mac is on the [Mac App Store](https://apps.apple.com/app/zunia/id6816604128?mt=12) and requires macOS 13. Safari on iOS is in review. Firefox is planned. Edge builds are not published. |
 | [Mobile wallet](https://github.com/Zunia-Lab/zunia-mobile) | iOS and Android | In App Store and Google Play review. WalletConnect sessions are accepted; WalletConnect signing is not implemented. |
 
 The [web dashboard](https://app.zunialab.com) is not something you install, and it holds no keys. It connects the Zunia extension, Keplr, or Zunia mobile by QR code, and every transaction it prepares is signed in that wallet.
