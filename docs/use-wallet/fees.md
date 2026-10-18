@@ -1,6 +1,6 @@
 ---
 title: Fees
-description: The network fee every transaction pays, and the 0.5% commission on swaps made with Zunia's own Swap screen in the extension or on the web dashboard.
+description: The network fee every transaction pays, and the 0.5% commission on swaps made with Zunia's own Swap screen in the extension, the mobile app or on the web dashboard.
 ---
 
 # Fees
@@ -11,7 +11,7 @@ The wallet is free to install. There is no premium tier and no token.
 |--------|-------------|------------------|
 | Send, IBC transfer | Yes | None |
 | Stake, unstake, claim rewards, vote | Yes | None |
-| Swap with the **Swap** screen of the extension or of the [web dashboard](https://app.zunialab.com) | Yes | 0.5% |
+| Swap with the **Swap** screen of the extension, of the mobile app, or of the [web dashboard](https://app.zunialab.com) | Yes | 0.5% |
 | Swap on another site or dApp, signed with Zunia | Yes | None |
 
 ## Network fee
@@ -20,7 +20,7 @@ Every transaction pays a network fee to the chain. It goes to validators, not to
 
 ## Swap commission
 
-A swap made with the **Swap** screen of the Zunia browser extension, or of the web dashboard at app.zunialab.com, carries a 0.5% commission, sent to Zunia. Both charge the same rate to the same Zunia addresses.
+A swap made with the **Swap** screen of the Zunia browser extension, of the Zunia mobile app (from version 0.1.0), or of the web dashboard at app.zunialab.com, carries a 0.5% commission, sent to Zunia. All three charge the same rate to the same Zunia addresses.
 
 - It is taken in the same transaction as the swap.
 - It is paid in the token you sell.

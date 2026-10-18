@@ -48,13 +48,13 @@ After a reload, call `restore` (or `getConnectedChains()`). That does not unlock
 By default the SDK writes to `localStorage`:
 
 - `zunia.session.transport`
-- `zunia.connect.v2.session` (relay URL, session id, dApp token, session keys and counters; never the QR join token)
+- `zunia.connect.v2.session` (relay URL, session id, dApp token, session keys and counters, and whether the user paired from this phone; never the QR join token)
 - `zunia.walletconnect.session`
 
 Any script on your origin can read these. Keep a strict Content Security Policy. Pass `storage: null` to keep the session in memory only (users pair again after a reload), or pass your own `{ getItem, setItem, removeItem }`.
 
 ## Timeouts and drops
 
-Over QR pairing and WalletConnect, each connect and each signature waits 5 minutes by default (`timeoutMs`, `requestTimeoutMs`). In the extension, a prompt nobody answers expires after 5 minutes, and the SDK rejects with `TIMEOUT` (`reason: "prompt-expired"`). Over QR pairing the SDK pings every 20 seconds, reconnects with backoff, and resends requests the relay had not confirmed. If the relay forgot the session, you get `SESSION_EXPIRED` and the user pairs again.
+Over QR pairing and WalletConnect, each connect and each signature waits 5 minutes by default (`timeoutMs`, `requestTimeoutMs`). In the extension, a prompt nobody answers expires after 5 minutes, and the SDK rejects with `TIMEOUT` (`reason: "prompt-expired"`). Over QR pairing the SDK pings every 20 seconds, reconnects with backoff, and resends requests the relay had not confirmed. If the relay forgot the session, you get `SESSION_EXPIRED` and the user pairs again. A request the relay cannot carry fails at once instead: over 512 KiB once encrypted (`INVALID_PARAMS`, `reason: "too-large"`), or while the phone is offline and the relay's queue for it is full (`NETWORK`, `reason: "queue-full"`).
 
 `disconnect()` from your page ends the session. On the extension it also revokes your site's grant for the session's chains (`window.zunia.disable`), so the next `connect` asks the user again. Over QR pairing it closes the relay session and deletes the stored one. The user can also revoke your site under **Connected dApps**.

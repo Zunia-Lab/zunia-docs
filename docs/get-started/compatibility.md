@@ -1,10 +1,11 @@
 ---
 title: Compatibility
+description: "Status of each surface: the extension per browser and its store listings, Zunia mobile 0.1.0 (QR pairing, same-device return and wake links, WalletConnect), the SDK packages, the relay, signing modes and chains."
 ---
 
 # Compatibility and status
 
-Honest status for each surface. The extension is on the Chrome Web Store. Safari, the App Store and Google Play are in review. The JavaScript packages are on npm.
+Honest status for each surface. The extension is on the Chrome Web Store, and Safari on Mac is on the Mac App Store; Safari on iPhone and iPad is in review. Zunia mobile 0.1.0 is not on the App Store or Google Play yet. The JavaScript packages are on npm.
 
 ## Browsers
 
@@ -27,11 +28,11 @@ macOS Safari has not been run end to end. It needs **Allow unsigned extensions**
 | --- | --- | --- |
 | App | Flutter, iOS 13+ in the current project | Flutter, Android 7.0+ (API 24) in the current project |
 | QR pairing (`zunia.connect.v2`) | Implemented | Implemented |
-| WalletConnect session | Accepted when a Cloud project id is set | Same |
-| WalletConnect signing | Not implemented | Not implemented |
-| Store | In App Store review | In Google Play review |
+| Same-device pairing with a return target (`ret`), wake links | Implemented in 0.1.0 | Implemented in 0.1.0 |
+| WalletConnect v2 (sessions and signing) | In builds with a WalletConnect project id | Same |
+| Store | Not listed yet | Not listed yet |
 
-Pair Zunia mobile with a site by QR, not by WalletConnect, until signing exists.
+Pair Zunia mobile with a site by QR: it needs no WalletConnect project id, and the phone shows the origin the relay verified. On the phone itself, see [Use Zunia mobile from another app](../integrate/app-to-app.md).
 
 ## SDKs
 

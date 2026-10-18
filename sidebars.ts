@@ -17,6 +17,7 @@ const sidebars: SidebarsConfig = {
         'integrate/sign-in',
         'integrate/events',
         'integrate/qr',
+        'integrate/app-to-app',
         'integrate/walletconnect',
         'integrate/suggest-chain',
         'integrate/flutter',

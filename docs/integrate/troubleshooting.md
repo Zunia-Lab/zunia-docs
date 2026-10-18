@@ -1,5 +1,6 @@
 ---
 title: Troubleshooting
+description: "Fixes for common integration problems: NOT_INSTALLED, a connect window that never appears, LOCKED, ORIGIN_MISMATCH on sign-in, QR pairing that never completes, a phone that does not show the request, too-large and queue-full errors, SESSION_EXPIRED, CosmJS signing and UNSUPPORTED."
 ---
 
 # Troubleshooting
@@ -40,6 +41,19 @@ Safari drops `tabs.sendMessage` from the worker. Current builds send events over
 - The phone refuses a QR whose relay is not on its trusted list. Debug builds also accept relays on the same machine or local network.
 - Compare the 6-digit codes. If they differ, throw the session away.
 - Unscanned rooms die after 10 minutes.
+- On the phone itself, the user taps **Open the Zunia app** rather than scanning. If nothing opens, Zunia is not installed, or the browser wants a fresh tap: keep a button that calls `session.openWallet()`.
+
+## The phone does not show the request
+
+Over QR pairing, the relay keeps a request for up to 10 minutes while Zunia is offline, and hands it over when Zunia reconnects. When the user paired from the same phone, the SDK opens Zunia for each signing request (sdk-web 0.2.0 and later). On a computer, ask the user to open Zunia on their phone. See [Use Zunia mobile from another app](./app-to-app.md).
+
+## `INVALID_PARAMS` with `reason: "too-large"`
+
+The request is over the relay's 512 KiB frame limit once encrypted, so the SDK did not send it. Split the transaction, or move large data out of the memo or the message.
+
+## `NETWORK` with `reason: "queue-full"`
+
+The phone has been offline while requests piled up: the relay holds at most 32 frames (1 MiB) for it, for 10 minutes. Ask the user to open Zunia, then try again.
 
 ## `SESSION_EXPIRED`
 

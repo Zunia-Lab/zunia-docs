@@ -1,5 +1,6 @@
 ---
 title: Connect a phone by QR
+description: Pair a web page with Zunia mobile through zunia.connect.v2 and the Zunia relay. The QR code, the app link on a phone, the 6-digit check, the verified origin, restore after a reload, limits and deep links.
 ---
 
 # Connect a phone by QR
@@ -28,7 +29,13 @@ await session.connect({
 });
 ```
 
-On React, `ConnectPairingModal` does this. On a phone browser it also offers a `zunia://connect?...` link so the user does not have to scan their own screen.
+On React, `ConnectPairingModal` does this.
+
+## On a phone
+
+A phone cannot scan its own screen. In a phone or tablet browser, `ConnectPairingModal` leads with **Open the Zunia app**, a link to `pairing.appUri`, and keeps the QR code below it for pairing another phone. On a computer it shows only the QR code: a `zunia://` link has nothing to open there. `showAppLink` overrides the detection, and `isPhoneBrowser()` from `@zunialab/sdk-web` is the same test for your own dialog.
+
+`pairing.appUri` is the pairing link plus `ret`, this page's address by default, so Zunia brings the user back once they answer. After pairing that way, each signing request opens Zunia on its own (a wake link). [Use Zunia mobile from another app](./app-to-app.md) explains both, and how to turn them off. These need `@zunialab/sdk-web` 0.2.0 or later; before it, the modal showed the plain `pairing.uri` link on every device.
 
 An unscanned code expires after 10 minutes. After the wallet sends `paired`, the room lasts 24 hours.
 
@@ -65,11 +72,18 @@ So pass `apiBase: "https://api.zunialab.com"`. A relay you run yourself only pai
 
 `session.restore({ apiBase, chains })` reopens the WebSocket with the stored dApp token and session keys. The wallet uses its `resumeToken`. Counters keep going, so a replayed frame is ignored.
 
+## Limits
+
+The relay carries frames of at most 512 KiB. The SDK refuses a request that would be larger once encrypted, before anything leaves: `INVALID_PARAMS` with `reason: "too-large"`. Split such a transaction.
+
+While the phone is offline, the relay keeps up to 32 frames (1 MiB) for it, for 10 minutes. A request beyond that fails at once with `NETWORK` and `reason: "queue-full"`, instead of waiting out the 5-minute timeout; ask the user to open Zunia, then try again. Both need sdk-web 0.2.0 or later. See [Lifetimes and limits](../reference/connect-v2.md#lifetimes-and-limits).
+
 ## Deep links
 
 | Kind | Example |
 |------|---------|
-| Custom scheme | `zunia://connect?…` |
-| Universal / App Link | `https://zunialab.com/connect?…` or `https://link.zunialab.com/connect?…` |
+| Pairing, custom scheme | `zunia://connect?v=2&sid=…&t=…&pk=…&r=…`, plus `&ret=…` in the app link |
+| Pairing, Universal / App Link | `https://zunialab.com/connect?…` or `https://link.zunialab.com/connect?…` |
+| Wake a paired session | `zunia://connect/wake?sid=…` or `https://zunialab.com/connect/wake?sid=…` |
 
-Those HTTPS links do not open the app yet: the `apple-app-site-association` and `assetlinks.json` files on zunialab.com and link.zunialab.com still hold placeholders for the Apple team id and the Play signing certificate. Use the `zunia://` link.
+Those HTTPS links do not open the app yet: the `apple-app-site-association` and `assetlinks.json` files on zunialab.com and link.zunialab.com still hold placeholders for the Apple team id and the Play signing certificate. Use the `zunia://` links.

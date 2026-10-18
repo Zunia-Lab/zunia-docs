@@ -82,7 +82,7 @@ Verify on the server with `verifySignIn` from `@zunialab/sdk-core`.
 ## Components
 
 - `ConnectWithZuniaButton`: official button. Opens the install page when `installed` is false and there is no `onClick`.
-- `ConnectPairingModal`: QR code, then the 6-digit check. On a phone it also offers a link that opens the Zunia app. Cancel should call `disconnect()`.
+- `ConnectPairingModal`: QR code, then the 6-digit check. In a phone or tablet browser it leads with **Open the Zunia app**, which opens Zunia on the same phone and brings the user back; on a computer it shows only the QR code (`showAppLink` overrides). See [Use Zunia mobile from another app](./app-to-app.md). Cancel should call `disconnect()`.
 - `ZuniaQrCode`: SVG, rendered locally.
 - `ZuniaMark`: the logo.
 - `useZunia()`: detects `window.zunia` only.

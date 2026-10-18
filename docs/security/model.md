@@ -33,7 +33,9 @@ A Sign in with Zunia message must name the site that asked. The extension compar
 
 ## QR pairing
 
-Messages between the page and the phone are X25519 + HKDF-SHA256 + ChaCha20-Poly1305, with sequence numbers. The relay sees ciphertext and routing metadata. The QR join token is single use. The dApp token never goes in the QR.
+Messages between the page and the phone are X25519 + HKDF-SHA256 + ChaCha20-Poly1305, with sequence numbers inside the encrypted envelope. The relay sees ciphertext, routing metadata and the wallet's public key (sent in the clear in `hello`), never the session keys. The QR join token is single use. The dApp token never goes in the QR.
+
+On one phone, a pairing link may carry `ret`, a return address that Zunia opens only after the user answers, and only when that link opened Zunia on the same device. Zunia ignores script, local-content and its own schemes there. A wake link (`zunia://connect/wake?sid=…`) holds no secret: it brings up a session the phone already has, and nothing else. See [`zunia.connect.v2`](../reference/connect-v2.md#ret-the-return-target).
 
 `verifiedOrigin` is the `Origin` header the relay recorded when the page created the session. The phone shows it and binds sign-in to it. That value is only as good as the relay: Zunia mobile therefore refuses pairing URIs whose relay is not on its trusted list. By default that list holds only Zunia's relay, `wss://api.zunialab.com`. See [QR connection](../integrate/qr.md#verified-origin).
 
@@ -47,7 +49,7 @@ QR pairing goes through Zunia's relay at `api.zunialab.com`, which sees cipherte
 
 ## Limits (relay)
 
-Session creation per client address, frame size and rate, a global room cap, hashed tokens, `timingSafeEqual`. `TRUST_PROXY` must match your edge, or the limiter attaches to the wrong address. One instance only.
+Session creation per client address, frame size (512 KiB) and rate, a bounded offline queue (32 frames, 1 MiB, 10 minutes), a global room cap, hashed tokens, `timingSafeEqual`. `TRUST_PROXY` must match your edge, or the limiter attaches to the wrong address. One instance only.
 
 ## Content Security Policy
 

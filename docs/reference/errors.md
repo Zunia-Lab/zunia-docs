@@ -1,5 +1,6 @@
 ---
 title: Errors
+description: "Every ZuniaConnectError code and reason, including too-large and queue-full for QR pairing, what each means and what to do, and the ZuniaSignInError codes verifySignIn throws on the server."
 ---
 
 # Errors
@@ -33,6 +34,10 @@ Every transport rejects with `ZuniaConnectError` and a stable `code`. `window.zu
 | `amino-escaping` | `UNSUPPORTED` | Zunia 0.1.4 or older signed `&`, `<` or `>` in a way the chain refuses. Stopped before broadcast. |
 | `prompt-expired` | `TIMEOUT` | The extension's prompt expired before anyone answered. |
 | `stale-page` | `DISCONNECTED` | The extension was updated or reloaded under the page. Reload the page. |
+| `too-large` | `INVALID_PARAMS` | QR pairing: the request is over the relay's 512 KiB frame limit once encrypted. Nothing was sent. Split the transaction. |
+| `queue-full` | `NETWORK` | QR pairing: the phone is offline and the relay already holds as many frames for it as it can (32, or 1 MiB). This request was not delivered and is not sent again. Ask the user to open Zunia, then retry. |
+
+`too-large` and `queue-full` come with `@zunialab/sdk-web` 0.2.0 and later. Before it, the first made the relay drop the connection again and again, and the second ended in `TIMEOUT`.
 
 `explainZuniaError(error)` turns any error into a short `title`, a `message` with the next step, `retryable`, and the wallet's own text as `detail`.
 

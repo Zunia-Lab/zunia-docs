@@ -19,12 +19,12 @@ Onboarding → **Restore with phrase** in the extension, **I have a recovery phr
 
 ## More accounts
 
-The two apps add accounts differently:
+Both apps add accounts the same way: each new account has its own recovery phrase, created new or restored from a phrase you already have. The same password unlocks them all. Back up each phrase.
 
-- **Extension:** account name (top left) → **Add account** → **Create new account** or **Restore with phrase**. Each account added this way has its own recovery phrase. The same password unlocks them all. Back up each phrase.
-- **Mobile app:** **Settings & security** → **Wallets** → **Add account**. It derives the next account from the same phrase, so backing up that phrase backs up all of them.
+- **Extension:** account name (top left) → **Add account** → **Create new account** or **Restore with phrase**.
+- **Mobile app** (0.1.0): **Settings & security** → **Wallets**, then add an account.
 
-So only the first account of a phrase appears in both apps when you import that phrase. Switch accounts from the account list; a connected site hears `accountsChanged`.
+To have an account in both apps, import its phrase in each. Switch accounts from the account list; a connected site hears `accountsChanged`.
 
 ## Reveal the phrase
 
