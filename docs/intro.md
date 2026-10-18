@@ -45,13 +45,13 @@ sequenceDiagram
 - Sign in with no transaction: the wallet signs a message bound to your site, and your server checks it with `verifySignIn`.
 - Sign Amino and Direct transactions and broadcast them yourself (CosmJS or your own client).
 - Pair Zunia mobile with a site by QR code, through the Zunia relay.
+- Connect a Flutter app to Zunia mobile by QR code or on the same phone with [`zunia_sdk`](./integrate/flutter.md) from pub.dev.
 - Send, swap, stake and vote from the extension itself, using the WebAssembly kernel.
 - Use the web dashboard at [app.zunialab.com](https://app.zunialab.com) with the extension, Keplr or Zunia mobile.
 
 ## What is not ready
 
 - Store listings other than the Chrome Web Store. Safari, the App Store and Google Play are in review. Firefox is planned. Edge has no listing.
-- A Flutter SDK for mobile dApps. The existing `zunia_sdk` package is deep links and a button. The v2 client is planned.
 - WalletConnect signing in Zunia mobile.
 - Hardware wallets (Ledger, Keystone).
 - An independent security audit. None has been completed.

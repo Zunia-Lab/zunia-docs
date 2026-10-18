@@ -41,7 +41,7 @@ Pair Zunia mobile with a site by QR, not by WalletConnect, until signing exists.
 | `@zunialab/sdk-react` | React 18 or 19 | On npm |
 | `@zunialab/sdk-core` | Servers and wallets | On npm |
 | `@zunialab/interchain` | IBC routes and memos | On npm |
-| `zunia_sdk` (Dart) | Flutter dApps | Deep links and a button. The v2 session client is planned. |
+| `zunia_sdk` (Dart) | Flutter apps (Flutter 3.27+) | On pub.dev |
 
 ## Relay
 
