@@ -4,7 +4,9 @@ title: Install the mobile wallet
 
 # Install the mobile wallet
 
-The iOS and Android apps are in App Store and Google Play review. Until they are listed, build them yourself with a Flutter release that ships Dart 3.11.5 or later (the repo builds with Flutter 3.41).
+Install Zunia Wallet from the store. iPhone: the [App Store](https://apps.apple.com/app/zunia-wallet/id6824444063). Android: [Google Play](https://play.google.com/store/apps/details?id=com.zunialab.wallet).
+
+To build it yourself, use a Flutter release that ships Dart 3.11.5 or later (the repo builds with Flutter 3.41).
 
 The app links zunia-core and zunia-ui from checkouts next to it, and needs the signing kernel's native libraries from a [zunia-core release](https://github.com/Zunia-Lab/zunia-core/releases). `scripts/fetch-native.sh` downloads and checks them; it needs the GitHub CLI (`gh`).
 

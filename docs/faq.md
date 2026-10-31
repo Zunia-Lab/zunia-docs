@@ -6,11 +6,11 @@ title: FAQ
 
 ## Is Zunia in the stores?
 
-The extension is on the [Chrome Web Store](https://chromewebstore.google.com/detail/zunia/ngokakoekdogobjmokipglbcclelgajk). Safari, the App Store and Google Play are in review. Firefox is planned. For the others, load a build from GitHub. See [Install the extension](./use-wallet/extension.md) and [Install the mobile wallet](./use-wallet/mobile.md).
+The extension is on the [Chrome Web Store](https://chromewebstore.google.com/detail/zunia/ngokakoekdogobjmokipglbcclelgajk). Safari on Mac is on the [Mac App Store](https://apps.apple.com/app/zunia/id6816604128?mt=12). The iPhone wallet is on the [App Store](https://apps.apple.com/app/zunia-wallet/id6824444063). Android is on [Google Play](https://play.google.com/store/apps/details?id=com.zunialab.wallet). Safari on iPhone and iPad is still in review. Firefox is planned. See [Install the extension](./use-wallet/extension.md) and [Install the mobile wallet](./use-wallet/mobile.md).
 
 ## Can I use the same wallet on desktop and phone?
 
-Yes. Import the same recovery phrase on the second device. Each device holds its own encrypted copy. Zunia does not sync keys through a server. The two apps add further accounts differently; see [More accounts](./use-wallet/keys.md#more-accounts).
+Yes. Import the same recovery phrase on the second device. Each device holds its own encrypted copy. Zunia does not sync keys through a server. Further accounts are separate phrases; see [More accounts](./use-wallet/keys.md#more-accounts).
 
 ## How does a website connect?
 

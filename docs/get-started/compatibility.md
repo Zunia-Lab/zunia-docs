@@ -4,7 +4,7 @@ title: Compatibility
 
 # Compatibility and status
 
-Honest status for each surface. The extension is on the Chrome Web Store. Safari, the App Store and Google Play are in review. The JavaScript packages are on npm.
+Honest status for each surface. The extension is on the Chrome Web Store and, on Mac, the Mac App Store. The iPhone wallet is on the App Store. Android is on Google Play. The JavaScript packages are on npm.
 
 ## Browsers
 
@@ -15,7 +15,7 @@ The extension is one Manifest V3 codebase. Each browser gets its own build. Deta
 | Build | `.output/chrome-mv3` | `.output/edge-mv3` | `.output/firefox-mv3` | `.output/safari-mv3` plus the Xcode app |
 | Connect, sign-in, signature, live account switch and revoke | Automated ([zunia-e2e](https://github.com/Zunia-Lab/zunia-e2e)) | Same Chromium build | Automated | By hand on the iOS Simulator |
 | In-page connect prompt | Yes, when the page is visible | Yes | No. Requests wait in the toolbar popup. | No. Toolbar popup, or a tab on iOS when the popup cannot open. |
-| Published | [Chrome Web Store](https://chromewebstore.google.com/detail/zunia/ngokakoekdogobjmokipglbcclelgajk) | No | No, planned | In App Store review |
+| Published | [Chrome Web Store](https://chromewebstore.google.com/detail/zunia/ngokakoekdogobjmokipglbcclelgajk) | No | No, planned | Mac: [Mac App Store](https://apps.apple.com/app/zunia/id6816604128?mt=12). iPhone and iPad: in review |
 
 The Firefox build needs Firefox 140 or later. The Safari app needs iOS 17 or macOS 13 and later. Firefox unloads an idle background page after about 30 seconds. The unlocked session lives in `storage.session` and survives that. Safari on iOS stops an idle worker after about 8 seconds; a page that uses the wallet, and the approval screen, ping the worker so requests still complete. Safari also drops `tabs.sendMessage`, so dApp events travel over a port the content script opens. See [the provider events](../reference/events.md#safari).
 
@@ -29,7 +29,7 @@ macOS Safari has not been run end to end. It needs **Allow unsigned extensions**
 | QR pairing (`zunia.connect.v2`) | Implemented | Implemented |
 | WalletConnect session | Accepted when a Cloud project id is set | Same |
 | WalletConnect signing | Not implemented | Not implemented |
-| Store | In App Store review | In Google Play review |
+| Store | [App Store](https://apps.apple.com/app/zunia-wallet/id6824444063), Zunia Wallet | [Google Play](https://play.google.com/store/apps/details?id=com.zunialab.wallet) |
 
 Pair Zunia mobile with a site by QR, not by WalletConnect, until signing exists.
 

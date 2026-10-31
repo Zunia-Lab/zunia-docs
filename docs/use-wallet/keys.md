@@ -17,14 +17,18 @@ Onboarding → **Create wallet** → write the phrase on paper → confirm some 
 
 Onboarding → **Restore with phrase** in the extension, **I have a recovery phrase** in the mobile app. 12 or 24 words. The password only unlocks this device; it is not part of the phrase.
 
+Coming from another wallet: [Leap](./from-leap.md), [Cosmostation](./from-cosmostation.md). Type the phrase only inside Zunia. A website that asks for it is not Zunia.
+
 ## More accounts
 
-The two apps add accounts differently:
+Each account you add has its own recovery phrase. The same password unlocks them all. Back up every phrase. Importing a phrase shows the first address of those words. Adding an account does not recreate a later address that another wallet derived from the same phrase.
 
-- **Extension:** account name (top left) → **Add account** → **Create new account** or **Restore with phrase**. Each account added this way has its own recovery phrase. The same password unlocks them all. Back up each phrase.
-- **Mobile app:** **Settings & security** → **Wallets** → **Add account**. It derives the next account from the same phrase, so backing up that phrase backs up all of them.
+- **Extension:** account name (top left) → **Add account** → **Create new account** or **Restore with phrase**.
+- **Mobile app:** **Settings & security** → **Wallets** → **Add account** → **Create new account** or **Restore with a recovery phrase**.
 
-So only the first account of a phrase appears in both apps when you import that phrase. Switch accounts from the account list; a connected site hears `accountsChanged`.
+An account marked "from the first phrase" was created by an earlier version of the phone app. That phrase still backs it up.
+
+Switch accounts from the account list. A connected site hears `accountsChanged`.
 
 ## Reveal the phrase
 

@@ -6,7 +6,7 @@ title: Install the extension
 
 On Chrome, install Zunia from the [Chrome Web Store](https://chromewebstore.google.com/detail/zunia/ngokakoekdogobjmokipglbcclelgajk).
 
-Safari is in App Store review and Firefox is planned. Edge Add-ons has no listing. For those browsers, load a build you made. The extension links zunia-core (built to WebAssembly with Rust and `wasm-bindgen-cli`), zunia-ui and zunia-sdk from checkouts next to it, so build those first:
+Safari on Mac is on the [Mac App Store](https://apps.apple.com/app/zunia/id6816604128?mt=12). Safari on iPhone and iPad is still in review. Firefox is planned. Edge Add-ons has no listing. For a browser without a listing, load a build you made. The extension links zunia-core (built to WebAssembly with Rust and `wasm-bindgen-cli`), zunia-ui and zunia-sdk from checkouts next to it, so build those first:
 
 ```bash
 git clone https://github.com/Zunia-Lab/zunia-core

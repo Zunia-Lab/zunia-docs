@@ -47,6 +47,8 @@ const sidebars: SidebarsConfig = {
         'use-wallet/extension',
         'use-wallet/mobile',
         'use-wallet/keys',
+        'use-wallet/from-leap',
+        'use-wallet/from-cosmostation',
         'use-wallet/networks',
         'use-wallet/send-and-ibc',
         'use-wallet/staking',

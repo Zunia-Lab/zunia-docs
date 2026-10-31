@@ -185,6 +185,6 @@ Two failures are refused before they reach the phone:
 
 ## The wallet side
 
-The other end of every session is Zunia mobile ([zunia-mobile](https://github.com/Zunia-Lab/zunia-mobile)). It shows the 6-digit code and the verified origin, binds sign-in to that origin, and resumes the session after a reconnect. For its status and how to build it, see [Install the mobile wallet](../use-wallet/mobile.md).
+The other end of every session is Zunia mobile ([zunia-mobile](https://github.com/Zunia-Lab/zunia-mobile)). It shows the 6-digit code and the verified origin, binds sign-in to that origin, and resumes the session after a reconnect. The app is Zunia Wallet on the [App Store](https://apps.apple.com/app/zunia-wallet/id6824444063) and on [Google Play](https://play.google.com/store/apps/details?id=com.zunialab.wallet). For how to build it, see [Install the mobile wallet](../use-wallet/mobile.md).
 
 Return links (`ret`) and wake links need a Zunia mobile build that handles them, 0.1.0 or later. An older build pairs and signs the same way but leaves the person in Zunia.
